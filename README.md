@@ -1,20 +1,19 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:3B82F6,100:8B5CF6&height=200&section=header&text=Mohamed%20Ashour&fontSize=60&fontColor=fff&animation=fadeIn&fontAlignY=35&desc=AI%20%26%20Machine%20Learning%20Engineer&descAlignY=55&descSize=20" width="100%"/>
+# 👋 Mohamed Ashour
+### AI & Machine Learning Engineer
 
-[![Typing SVG](https://readme-typing-svg.demolab.com?font=JetBrains+Mono&size=24&duration=3000&pause=1000&color=3B82F6&center=true&vCenter=true&width=800&lines=AI+%26+Machine+Learning+Engineer;Specializing+in+NLP+%26+Generative+AI;Building+Production-Grade+ML+Systems;Transformers+%7C+LLMs+%7C+Vector+Databases)](https://git.io/typing-svg)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/mohammed-ashour-ai/)
+[![Email](https://img.shields.io/badge/Gmail-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:muhamed.3ashour@gmail.com)
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/ashour-git)
 
-<p align="center">
-  <a href="https://www.linkedin.com/in/mohammed-ashour-ai/"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" /></a>
-  <a href="mailto:muhamed.3ashour@gmail.com"><img src="https://img.shields.io/badge/Gmail-EA4335?style=for-the-badge&logo=gmail&logoColor=white" /></a>
-  <a href="https://github.com/ashour-git"><img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" /></a>
-</p>
+**Specializing in NLP • Generative AI • LLMs • Vector Databases**
 
 </div>
 
 ---
 
-## �‍💻 About Me
+## 👨‍💻 About Me
 
 ```python
 from typing import List, Dict
@@ -66,7 +65,7 @@ print(profile.current_focus())
 
 `Generative AI` • `Semantic Search` • `Vector Embeddings` • `Production MLOps` • `Cost Optimization`
 
-</div>  
+</div>
 
 ---
 
@@ -123,17 +122,15 @@ print(profile.current_focus())
 
 ---
 
-## 📊 GitHub Analytics
+## 📊 GitHub Stats
 
 <div align="center">
-  
-<img width="49%" src="https://github-readme-stats.vercel.app/api?username=ashour-git&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0D1117&title_color=3B82F6&icon_color=8B5CF6&text_color=E6EDF3&count_private=true&include_all_commits=true" />
-<img width="49%" src="https://github-readme-streak-stats.herokuapp.com/?user=ashour-git&theme=tokyonight&hide_border=true&background=0D1117&ring=3B82F6&fire=8B5CF6&currStreakLabel=E6EDF3" />
 
-<img width="49%" src="https://github-readme-stats.vercel.app/api/top-langs/?username=ashour-git&layout=compact&theme=tokyonight&hide_border=true&bg_color=0D1117&title_color=3B82F6&text_color=E6EDF3&langs_count=8&hide=jupyter%20notebook" />
-<img width="49%" src="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=ashour-git&theme=tokyonight&utcOffset=2" />
+![GitHub Stats](https://github-readme-stats.vercel.app/api?username=ashour-git&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0D1117&title_color=3B82F6&icon_color=8B5CF6&text_color=E6EDF3&count_private=true&include_all_commits=true)
 
-<img width="100%" src="https://github-readme-activity-graph.vercel.app/graph?username=ashour-git&theme=tokyo-night&hide_border=true&bg_color=0D1117&color=3B82F6&line=8B5CF6&point=E6EDF3" />
+![GitHub Streak](https://github-readme-streak-stats.herokuapp.com/?user=ashour-git&theme=tokyonight&hide_border=true&background=0D1117&ring=3B82F6&fire=8B5CF6&currStreakLabel=E6EDF3)
+
+![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=ashour-git&layout=compact&theme=tokyonight&hide_border=true&bg_color=0D1117&title_color=3B82F6&text_color=E6EDF3&langs_count=8)
 
 </div>
 
@@ -146,9 +143,7 @@ print(profile.current_focus())
 ### 🤖 **Semantic Book Recommender System**
 *Production-Grade AI Application with 5K+ Books & Sub-100ms Query Performance*
 
-<a href="https://github.com/ashour-git/semantic-book-recommender">
-  <img src="https://github-readme-stats.vercel.app/api/pin/?username=ashour-git&repo=semantic-book-recommender&theme=tokyonight&hide_border=true&bg_color=0D1117&title_color=3B82F6&icon_color=8B5CF6&text_color=E6EDF3" />
-</a>
+[![Repo](https://github-readme-stats.vercel.app/api/pin/?username=ashour-git&repo=semantic-book-recommender&theme=tokyonight&hide_border=true&bg_color=0D1117&title_color=3B82F6&icon_color=8B5CF6&text_color=E6EDF3)](https://github.com/ashour-git/semantic-book-recommender)
 
 </div>
 
@@ -215,7 +210,7 @@ Key Features:
 
 ---
 
-## � Core Competencies
+## 💡 Core Competencies
 
 <div align="center">
 
@@ -283,7 +278,7 @@ Performance Tuning
 
 ---
 
-## � Education & Certifications
+## 🎓 Education & Certifications
 
 <div align="center">
 
@@ -300,17 +295,9 @@ Performance Tuning
 
 ### **I'm actively seeking opportunities in AI/ML Engineering**
 
-<p>
-<a href="https://www.linkedin.com/in/mohammed-ashour-ai/">
-  <img src="https://img.shields.io/badge/LinkedIn-Connect_with_me-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" />
-</a>
-<a href="mailto:muhamed.3ashour@gmail.com">
-  <img src="https://img.shields.io/badge/Email-Let's_Talk-EA4335?style=for-the-badge&logo=gmail&logoColor=white" />
-</a>
-<a href="https://github.com/ashour-git">
-  <img src="https://img.shields.io/badge/GitHub-Follow-181717?style=for-the-badge&logo=github&logoColor=white" />
-</a>
-</p>
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect_with_me-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/mohammed-ashour-ai/)
+[![Email](https://img.shields.io/badge/Email-Let's_Talk-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:muhamed.3ashour@gmail.com)
+[![GitHub](https://img.shields.io/badge/GitHub-Follow-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/ashour-git)
 
 ---
 
@@ -386,5 +373,7 @@ Data Analysis
 ---
 
 <div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:3B82F6,100:8B5CF6&height=120&section=footer" width="100%"/>
+
+**Made with ❤️ and Python**
+
 </div>
