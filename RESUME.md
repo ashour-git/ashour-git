@@ -12,10 +12,10 @@ you can be called on. Publicly verifiable metrics from GitHub are already inline
 
 # Mohamed Ashour
 
-**AI Engineer · Machine Learning Engineer · LLM Engineer** — RAG, MLOps, Data Engineering
+**AI Engineer · ML Engineer · LLM Engineer** — RAG, MLOps, Data Engineering
 
 Cairo, Egypt · +20 100 551 3291 · muhamed.3ashour@gmail.com
-LinkedIn: linkedin.com/in/mohamedashour-ai · GitHub: github.com/ashour-git · Kaggle: kaggle.com/mohammedashourhelmy
+LinkedIn: linkedin.com/in/mohamedashour-ai · GitHub: github.com/ashour-git
 
 ---
 
@@ -34,14 +34,14 @@ AI Engineer shipping production AI governance and compliance systems at SustainG
 
 ## Technical Skills
 
-**Core competencies** — LLM applications · RAG · Agentic AI · Prompt engineering · Fine-tuning · Embeddings and semantic search · Machine learning · MLOps · Data engineering · Time-series forecasting · Computer vision
+**Core competencies** — LLM applications · RAG · Agentic AI · Prompt engineering · Embeddings and semantic search · Machine learning · MLOps · Data engineering · Time-series forecasting · Computer vision
 
 - **Programming:** Python, TypeScript, JavaScript, SQL
 - **AI and LLMs:** RAG, Agentic AI, prompt engineering, Hugging Face Transformers, LangChain, pgvector, ChromaDB, embedding models, NLP
-- **Machine learning:** LightGBM, Scikit-Learn, PyTorch, TensorFlow, Optuna, MLflow, time-series forecasting, fine-tuning
+- **Machine learning:** LightGBM, Scikit-Learn, PyTorch, Optuna, MLflow, time-series forecasting, fine-tuning
 - **Computer vision:** OpenCV, YOLOv5, MediaPipe, ResNet-50, CNNs
 - **Backend and data:** FastAPI, Next.js, Node.js, PostgreSQL, Redis, SQLAlchemy, Drizzle ORM, Pandas, NumPy
-- **Cloud and MLOps:** Azure ML, Azure OpenAI, Azure AI Foundry (Anthropic Claude), AWS, Docker, Docker Compose, GitHub Actions
+- **Cloud and MLOps:** Azure ML, Azure OpenAI, Azure AI Foundry (Anthropic Claude), Docker, Docker Compose, GitHub Actions
 - **Domain:** GRC/ESG SaaS, multi-tenant architecture, EU AI Act, audit-grade AI systems
 
 ---
@@ -82,7 +82,7 @@ Python · FastAPI · Next.js · LightGBM · Groq Llama 3.3 70B · RAG · pgvecto
 - Designed a hybrid recommender combining co-occurrence and content-based signals; 162 automated tests
 
 **Storefy — AI-First Multi-Tenant E-Commerce Platform**
-Next.js 15 · TypeScript · PostgreSQL · Drizzle ORM · Groq Llama-3 70B · Better Auth · Inngest · Paymob
+Next.js 15 · TypeScript · PostgreSQL · Drizzle ORM · Groq Llama 3.3 70B · Better Auth · Inngest · Paymob
 
 - Engineered a multi-tenant platform with wildcard-subdomain routing and database-level data isolation per tenant
 - Implemented a natural-language AI POS, natural-language analytics, and an AI business advisor
@@ -91,12 +91,12 @@ Next.js 15 · TypeScript · PostgreSQL · Drizzle ORM · Groq Llama-3 70B · Bet
 **Text-to-SQL Generator**
 Python · Azure OpenAI (GPT-4o) · Defense-in-depth validation · GitHub Actions
 
-- Built a production-hardened natural-language-to-SQL converter with multi-layer security validation and SQL-injection protection — 100% security test coverage (18/18 tests)
+- Developed a production-hardened natural-language-to-SQL converter with multi-layer security validation and SQL-injection protection — 100% security test coverage (18/18 tests)
 
 **Semantic Book Recommender**
 Python · sentence-transformers · ChromaDB · LangChain · Gradio
 
-- Built a semantic-search recommendation system matching 7,000+ books via vector embeddings, with ~67 ms average query time and zero API costs
+- Developed a semantic-search recommendation system indexing 7,000+ books via vector embeddings, with ~67 ms average query time and zero API costs
 
 **Hand Gesture Recognition**
 Python · PyTorch · MediaPipe · MLflow

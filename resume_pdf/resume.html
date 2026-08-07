@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Mohamed Ashour — Resume</title>
+<style>
+  @page { size: A4; margin: 13mm 15mm 13mm 15mm; }
+  * { box-sizing: border-box; }
+  html { -webkit-print-color-adjust: exact; }
+
+  body {
+    font-family: "Helvetica Neue", "Segoe UI", Arial, sans-serif;
+    color: #232627;
+    font-size: 9.6pt;
+    line-height: 1.38;
+    margin: 0;
+  }
+  a { color: inherit; text-decoration: none; }
+
+  /* ── Header ─────────────────────────────────────────────── */
+  h1 {
+    font-size: 25pt;
+    font-weight: 700;
+    letter-spacing: 0.4pt;
+    color: #111418;
+    margin: 0 0 2pt 0;
+    line-height: 1.1;
+  }
+  .subtitle {
+    font-size: 11.5pt;
+    font-weight: 600;
+    color: #1f4e79;
+    letter-spacing: 0.2pt;
+    margin: 0 0 6pt 0;
+  }
+  .contact {
+    font-size: 9pt;
+    color: #4a4f54;
+    padding-bottom: 6pt;
+    border-bottom: 1.4pt solid #1f4e79;
+    margin: 0;
+  }
+  .contact .sep { margin: 0 6px; color: #9aa1a7; }
+
+  /* ── Section headings ───────────────────────────────────── */
+  h2 {
+    font-size: 10.5pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.3pt;
+    color: #111418;
+    border-bottom: 1pt solid #d5dae0;
+    padding-bottom: 2pt;
+    margin: 10pt 0 5pt 0;
+    page-break-after: avoid;
+  }
+  h2:first-of-type { margin-top: 7pt; }
+
+  /* ── Body text ──────────────────────────────────────────── */
+  p { margin: 0 0 4pt 0; }
+  ul { margin: 1pt 0 3pt 0; padding-left: 15pt; }
+  li { margin-bottom: 2pt; }
+
+  /* ── Roles (Experience / Education) ─────────────────────── */
+  .role-block { page-break-inside: avoid; }
+  .role {
+    font-size: 10pt;
+    font-weight: 700;
+    color: #111418;
+    margin: 5pt 0 1pt 0;
+  }
+  .rolename { color: #111418; }
+  .rolemeta { font-weight: 400; color: #3f444a; }
+  .roleline {
+    font-style: italic;
+    color: #4a4f54;
+    font-size: 8.8pt;
+    margin: 0 0 2pt 0;
+  }
+
+  /* ── Projects ───────────────────────────────────────────── */
+  .project-block { page-break-inside: avoid; }
+  .project {
+    font-weight: 700;
+    font-size: 10pt;
+    color: #1f4e79;
+    margin: 5pt 0 1pt 0;
+  }
+  .stack {
+    font-size: 8.5pt;
+    color: #6b7178;
+    letter-spacing: 0.2pt;
+    margin: 0 0 2pt 0;
+  }
+
+  /* ── Misc ───────────────────────────────────────────────── */
+  .strengths { margin: 2pt 0 1pt 0; }
+  .strengths li { margin-bottom: 1pt; }
+  .certs { margin: 1pt 0 0 0; }
+  .certs li { margin-bottom: 1pt; }
+</style>
+</head>
+<body>
+
+<h1>Mohamed Ashour</h1>
+<div class="subtitle">AI Engineer &middot; ML Engineer &middot; LLM Engineer &mdash; RAG, MLOps, Data Engineering</div>
+<div class="contact">Cairo, Egypt <span class="sep">|</span> +20 100 551 3291 <span class="sep">|</span> muhamed.3ashour@gmail.com <span class="sep">|</span> linkedin.com/in/mohamedashour-ai <span class="sep">|</span> github.com/ashour-git</div>
+
+<h2>Professional Summary</h2>
+<p>AI Engineer shipping production AI governance and compliance systems at SustainGRC, a UK-based AI-native GRC/ESG SaaS. Design and build AI modules under real production constraints &mdash; multi-tenant architecture, audit-grade data integrity, and EU AI Act alignment &mdash; across the full machine-learning lifecycle, from data pipelines to deployed LLM services on Azure.</p>
+
+<div class="strengths"><b>Core strengths</b></div>
+<ul class="strengths">
+  <li><strong>LLM engineering</strong> &mdash; RAG, agentic workflows, prompt engineering, vector search (pgvector), sentence-transformers, Groq Llama 3.3, Azure OpenAI (GPT-4o)</li>
+  <li><strong>Full ML lifecycle</strong> &mdash; model development, experimentation (MLflow, Optuna), and containerized deployment (Docker, GitHub Actions, Azure)</li>
+  <li><strong>Production backends</strong> &mdash; FastAPI, PostgreSQL, Redis, and scalable multi-tenant SaaS architecture (Next.js / Drizzle ORM)</li>
+  <li><strong>Domain depth</strong> &mdash; EU AI Act, GRC/ESG compliance, deterministic risk classification, and Shadow AI discovery</li>
+</ul>
+
+<h2>Technical Skills</h2>
+<p><strong>Core competencies</strong> &mdash; LLM applications &middot; RAG &middot; Agentic AI &middot; Prompt engineering &middot; Embeddings and semantic search &middot; Machine learning &middot; MLOps &middot; Data engineering &middot; Time-series forecasting &middot; Computer vision</p>
+<ul>
+  <li><strong>Programming:</strong> Python, TypeScript, JavaScript, SQL</li>
+  <li><strong>AI and LLMs:</strong> RAG, Agentic AI, prompt engineering, Hugging Face Transformers, LangChain, pgvector, ChromaDB, embeddings, NLP</li>
+  <li><strong>Machine learning:</strong> LightGBM, Scikit-Learn, PyTorch, Optuna, MLflow, time-series forecasting, fine-tuning</li>
+  <li><strong>Computer vision:</strong> OpenCV, YOLOv5, MediaPipe, ResNet-50, CNNs</li>
+  <li><strong>Backend and data:</strong> FastAPI, Next.js, Node.js, PostgreSQL, Redis, SQLAlchemy, Drizzle ORM, Pandas, NumPy</li>
+  <li><strong>Cloud and MLOps:</strong> Azure ML, Azure OpenAI, Azure AI Foundry (Anthropic Claude), Docker, Docker Compose, GitHub Actions</li>
+  <li><strong>Domain:</strong> GRC/ESG SaaS, multi-tenant architecture, EU AI Act, audit-grade AI systems</li>
+</ul>
+
+<h2>Experience</h2>
+
+<div class="role-block">
+  <div class="role"><span class="rolename">AI Engineer</span> <span class="rolemeta">&mdash; SustainGRC &middot; Remote &middot; 2026 &ndash; Present</span></div>
+  <div class="rolemeta rolemeta-italic">AI-native GRC/ESG SaaS &mdash; end-to-end AI governance tooling</div>
+  <ul>
+    <li>Engineered a deterministic EU AI Act classification engine with five risk gates and a hash-chained audit trail, enabling audit-grade governance of AI systems across the platform</li>
+    <li>Delivered AI-assisted compliance drafting powered by Anthropic Claude on Azure AI Foundry for structured rights-impact assessments</li>
+    <li>Implemented AI discovery that matches network logs against a vendor signature library to surface unregistered AI tools</li>
+    <li>Built a climate-risk data pipeline ingesting PostgreSQL tables with country-specific physical-risk multipliers</li>
+    <li>Shaped the AI-governance product roadmap through product and competitor analysis</li>
+  </ul>
+</div>
+
+<div class="role-block">
+  <div class="role"><span class="rolename">Data Engineer Intern</span> <span class="rolemeta">&mdash; SustainGRC &middot; Remote &middot; 2025 &ndash; 2026</span></div>
+  <ul>
+    <li>Designed and shipped a Text-to-SQL feature translating natural-language questions into executable SQL via GPT-4o, with dual-layer security validation and 18/18 passing security tests</li>
+    <li>Automated backup and disaster-recovery pipelines with integrity-validation checksums</li>
+    <li>Applied FAIR data principles and automation to ESG data governance for sustainability and compliance reporting</li>
+  </ul>
+</div>
+
+<div class="role-block">
+  <div class="role"><span class="rolename">Machine Learning Intern</span> <span class="rolemeta">&mdash; CodeAlpha &middot; Remote &middot; 2024</span></div>
+  <ul>
+    <li>Fine-tuned a ResNet-50 image classification model for a computer-vision task</li>
+    <li>Prototyped a music recommendation system using collaborative filtering</li>
+    <li>Evaluated NLP and computer-vision models to inform development decisions</li>
+  </ul>
+</div>
+
+<h2>Projects</h2>
+
+<div class="project-block">
+  <div class="project"><span class="rolename">RestAI &mdash; AI-Powered Restaurant Management SaaS</span></div>
+  <div class="stack">Python &middot; FastAPI &middot; Next.js &middot; LightGBM &middot; Groq Llama 3.3 70B &middot; RAG &middot; pgvector &middot; Docker</div>
+  <ul>
+    <li>Architected a full-stack AI SaaS (FastAPI and Next.js) with JWT authentication and role-based access control</li>
+    <li>Engineered LightGBM demand forecasting with Optuna tuning over lag and rolling-window features for time-series demand prediction</li>
+    <li>Built a RAG assistant over menu and operational data using pgvector, sentence-transformers embeddings, and Groq Llama 3.3 70B</li>
+    <li>Designed a hybrid recommender combining co-occurrence and content-based signals; 162 automated tests</li>
+  </ul>
+</div>
+
+<div class="project-block">
+  <div class="project"><span class="rolename">Storefy &mdash; AI-First Multi-Tenant E-Commerce Platform</span></div>
+  <div class="stack">Next.js 15 &middot; TypeScript &middot; PostgreSQL &middot; Drizzle ORM &middot; Groq Llama 3.3 70B &middot; Better Auth &middot; Inngest &middot; Paymob</div>
+  <ul>
+    <li>Engineered a multi-tenant platform with wildcard-subdomain routing and database-level data isolation per tenant</li>
+    <li>Implemented a natural-language AI POS, natural-language analytics, and an AI business advisor</li>
+    <li>Delivered generative storefront onboarding that produces a theme, layout blocks, and a starter catalog from a text description</li>
+  </ul>
+</div>
+
+<div class="project-block">
+  <div class="project"><span class="rolename">Text-to-SQL Generator</span></div>
+  <div class="stack">Python &middot; Azure OpenAI (GPT-4o) &middot; Defense-in-depth validation &middot; GitHub Actions</div>
+  <ul>
+    <li>Developed a production-hardened natural-language-to-SQL converter with multi-layer security validation and SQL-injection protection &mdash; 100% security test coverage (18/18 tests)</li>
+  </ul>
+</div>
+
+<div class="project-block">
+  <div class="project"><span class="rolename">Semantic Book Recommender</span></div>
+  <div class="stack">Python &middot; sentence-transformers &middot; ChromaDB &middot; LangChain &middot; Gradio</div>
+  <ul>
+    <li>Developed a semantic-search recommendation system indexing 7,000+ books via vector embeddings, with roughly 67 ms average query time and zero API costs</li>
+  </ul>
+</div>
+
+<div class="project-block">
+  <div class="project"><span class="rolename">Hand Gesture Recognition</span></div>
+  <div class="stack">Python &middot; PyTorch &middot; MediaPipe &middot; MLflow</div>
+  <ul>
+    <li>Built a real-time recognition pipeline combining MediaPipe landmark extraction with a CNN, tracking experiments in MLflow</li>
+  </ul>
+</div>
+
+<h2>Education</h2>
+<div class="role"><span class="rolename">B.Sc. Computer Science</span> <span class="rolemeta">&mdash; Zagazig University, Egypt &middot; 2023</span></div>
+<div class="stack">Coursework: algorithms, database systems, distributed computing</div>
+
+<h2>Certifications and Programs</h2>
+<ul class="certs">
+  <li><strong>Supervised Machine Learning</strong> &mdash; DeepLearning.AI</li>
+  <li><strong>AWS Machine Learning Foundations</strong> &mdash; Amazon</li>
+  <li><strong>Claude Code in Action</strong> &mdash; Anthropic</li>
+  <li><strong>Microsoft Machine Learning Track</strong> &mdash; Digital Egypt Pioneers Initiative (DEPI)</li>
+  <li><strong>AI Diploma (150 hours)</strong> &mdash; Array Institute: MLOps, deep learning, data engineering</li>
+  <li><strong>IEEE Delta Academy</strong> &mdash; AI Track (Member)</li>
+</ul>
+
+</body>
+</html>
