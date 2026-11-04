@@ -1,31 +1,30 @@
-<h1 align="center">Mohamed Ashour</h1>
+<h1 align="left">Mohamed Ashour</h1>
 
-<p align="center">
+<p align="left">
   <b>AI Engineer</b> building AI governance and compliance systems at
-  <b>SustainGRC</b>, a UK-based AI-native GRC and ESG SaaS platform.
+  <b>SustainGRC</b>, a UK-based AI-native GRC & ESG SaaS platform.
 </p>
 
-<p align="center">
-  I design AI modules that operate under real constraints, from deterministic
-  risk classification and RAG assistants to MLOps pipelines on Azure.
-</p>
+<blockquote align="left">
+  I design AI modules that operate under real constraints, from deterministic risk classification and RAG assistants to MLOps pipelines on Azure.
+</blockquote>
 
----
+<hr/>
 
-<table>
+<table width="100%">
   <tr>
-    <td width="50%">
+    <td width="50%" valign="top">
       <h3>👋 About Me</h3>
       <p>
         AI Engineer building production AI governance and compliance systems
-        at SustainGRC, a UK-based AI-native GRC and ESG SaaS platform.
+        at SustainGRC, a UK-based AI-native GRC & ESG SaaS platform.
       </p>
       <p>
         I joined SustainGRC as a data engineer intern in July 2025 and moved
         into the AI role in September 2025.
       </p>
     </td>
-    <td width="50%">
+    <td width="50%" valign="top">
       <h3>🛠 Tech Stack</h3>
       <p align="center">
         <a href="#"><img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python"/></a>
@@ -41,11 +40,11 @@
   </tr>
 </table>
 
----
+<hr/>
 
 <h3>💼 Experience</h3>
 
-<table>
+<table width="100%" border="0" cellpadding="8" cellspacing="0">
   <tr>
     <td width="70%"><b>AI Engineer</b> at SustainGRC</td>
     <td width="30%">Sep 2025 - Present</td>
@@ -75,11 +74,11 @@
   </tr>
 </table>
 
----
+<hr/>
 
 <h3>🚀 Projects</h3>
 
-<table>
+<table width="100%" border="0" cellpadding="8" cellspacing="0">
   <tr>
     <td width="70%"><b>RestAI</b> — AI Restaurant Management SaaS</td>
     <td width="30%">Python · FastAPI · Next.js · LightGBM · pgvector · Docker</td>
@@ -109,11 +108,11 @@
   </tr>
 </table>
 
----
+<hr/>
 
 <h3>🎓 Education and Certifications</h3>
 
-<table>
+<table width="100%" border="0" cellpadding="8" cellspacing="0">
   <tr>
     <td width="70%"><b>B.Sc. Computer Science</b> — Zagazig University, 2023</td>
     <td width="30%"></td>
@@ -123,11 +122,11 @@
   </tr>
 </table>
 
----
+<hr/>
 
 <h3>🔗 Links</h3>
 
-<p align="center">
+<p align="left">
   <a href="https://www.linkedin.com/in/mohamedashour-ai">
     <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/>
   </a>
