@@ -1,98 +1,146 @@
 <h1 align="center">Mohamed Ashour</h1>
 
 <p align="center">
-  AI Engineer building production AI governance and compliance systems at
-  <strong>SustainGRC</strong>, a UK-based AI-native GRC & ESG SaaS platform.
+  <b>AI Engineer</b> building AI governance and compliance systems at
+  <b>SustainGRC</b>, a UK-based AI-native GRC and ESG SaaS platform.
 </p>
-
-<blockquote align="center">
-  I design AI modules that operate under real constraints, from deterministic risk classification and RAG assistants to MLOps pipelines on Azure. I build AI that enterprises can depend on.
-</blockquote>
-
----
-
-## 🧑‍💻 Experience
-
-### AI Engineer at SustainGRC
-Remote · Sep 2025 to Present
-
-- Engineered a deterministic EU AI Act classification engine with five risk tiers and a hash-chained audit trail.
-- Shipped an LLM drafting service on Claude Haiku 4.5 through Azure AI Foundry that writes a structured rights-impact assessment in under 30 seconds.
-- Built Shadow AI discovery that matches network logs against a vendor signature library and surfaces unregistered AI tools for compliance review.
-- Built a climate-risk data pipeline across three PostgreSQL tables with country-specific physical-risk multipliers.
-- Shaped the AI-governance product roadmap through product and competitor analysis.
-
----
-
-### Data Engineer Intern at SustainGRC
-Remote · Jul 2025 to Sep 2025
-
-- Designed and shipped a Text-to-SQL feature that turns analyst questions into executable SQL through GPT-4o, with dual validation layers. 18 of 18 security tests passed before release.
-- Automated backup and disaster recovery for ESG datasets with checksum-based integrity validation.
-
----
-
-### Machine Learning Intern at CodeAlpha
-Remote · May 2024 to Dec 2024
-
-- Fine-tuned ResNet-50 for image classification.
-- Built a music recommendation prototype with collaborative filtering.
-
----
-
-## 🛠 Skills
 
 <p align="center">
-  <a href="#"><img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python"/></a>
-  <a href="#"><img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript"/></a>
-  <a href="#"><img src="https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white" alt="FastAPI"/></a>
-  <a href="#"><img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL"/></a>
-  <a href="#"><img src="https://img.shields.io/badge/LangGraph-000000?style=for-the-badge&logo=python&logoColor=white" alt="LangGraph"/></a>
-  <a href="#"><img src="https://img.shields.io/badge/DSPy-000000?style=for-the-badge&logo=python&logoColor=white" alt="DSPy"/></a>
-  <a href="#"><img src="https://img.shields.io/badge/Azure-0089D6?style=for-the-badge&logo=microsoft-azure&logoColor=white" alt="Azure"/></a>
-  <a href="#"><img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker"/></a>
-  <a href="#"><img src="https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white" alt="GitHub Actions"/></a>
-  <a href="#"><img src="https://img.shields.io/badge/LLMs-6E40C9?style=for-the-badge&logo=openai&logoColor=white" alt="LLMs"/></a>
+  I design AI modules that operate under real constraints, from deterministic
+  risk classification and RAG assistants to MLOps pipelines on Azure.
 </p>
 
 ---
 
-## 🚀 Projects
-
-### RestAI — AI-Powered Restaurant Management SaaS
-`Python · FastAPI · Next.js · LightGBM · Llama 3.3 70B · RAG · pgvector · Docker`
-
-- LightGBM demand forecasting tuned with Optuna over lag and rolling-window features.
-- RAG assistant over menu and operational data through pgvector and sentence-transformers.
-- 162 automated tests covering the API, forecasting and recommender paths.
-
-### Retail Analytics Copilot — Hybrid RAG plus SQL Agent
-`Python · LangGraph · DSPy · Ollama · BM25 · SQLite`
-
-- 8-node LangGraph workflow that routes each question between BM25 retrieval and SQL.
-- DSPy tuning took valid, executable SQL from 50% to 100% on the eval set.
-
-### Text2SQL Generator
-`Python · Azure OpenAI (GPT-4o) · defense-in-depth validation · GitHub Actions`
-
-- Production-hardened natural language to SQL converter with multi-layer security validation. 18 of 18 security tests passed before release.
+<table>
+  <tr>
+    <td width="50%">
+      <h3>👋 About Me</h3>
+      <p>
+        AI Engineer building production AI governance and compliance systems
+        at SustainGRC, a UK-based AI-native GRC and ESG SaaS platform.
+      </p>
+      <p>
+        I joined SustainGRC as a data engineer intern in July 2025 and moved
+        into the AI role in September 2025.
+      </p>
+    </td>
+    <td width="50%">
+      <h3>🛠 Tech Stack</h3>
+      <p align="center">
+        <a href="#"><img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python"/></a>
+        <a href="#"><img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript"/></a>
+        <a href="#"><img src="https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white" alt="FastAPI"/></a>
+        <a href="#"><img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL"/></a>
+        <a href="#"><img src="https://img.shields.io/badge/LangGraph-000000?style=for-the-badge&logo=python&logoColor=white" alt="LangGraph"/></a>
+        <a href="#"><img src="https://img.shields.io/badge/DSPy-000000?style=for-the-badge&logo=python&logoColor=white" alt="DSPy"/></a>
+        <a href="#"><img src="https://img.shields.io/badge/Azure-0089D6?style=for-the-badge&logo=microsoft-azure&logoColor=white" alt="Azure"/></a>
+        <a href="#"><img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker"/></a>
+      </p>
+    </td>
+  </tr>
+</table>
 
 ---
 
-## 🎓 Education and Certifications
+<h3>💼 Experience</h3>
 
-- **B.Sc. Computer Science** — Zagazig University, 2023.
-- **Supervised Machine Learning** — DeepLearning.AI.
-- **AWS Machine Learning Foundations** — Amazon.
-- **Claude Code in Action** — Anthropic.
-- **Microsoft Machine Learning Track** — Digital Egypt Pioneers Initiative.
+<table>
+  <tr>
+    <td width="70%"><b>AI Engineer</b> at SustainGRC</td>
+    <td width="30%">Sep 2025 - Present</td>
+  </tr>
+  <tr>
+    <td colspan="2">Remote · Deterministic EU AI Act classification engine, LLM drafting service, Shadow AI discovery, climate-risk data pipeline.</td>
+  </tr>
+  <tr>
+    <td height="1"></td>
+  </tr>
+  <tr>
+    <td width="70%"><b>Data Engineer Intern</b> at SustainGRC</td>
+    <td width="30%">Jul 2025 - Sep 2025</td>
+  </tr>
+  <tr>
+    <td colspan="2">Remote · Text-to-SQL on GPT-4o with dual validation layers (18/18 security tests), automated backup and disaster recovery for ESG datasets.</td>
+  </tr>
+  <tr>
+    <td height="1"></td>
+  </tr>
+  <tr>
+    <td width="70%"><b>Machine Learning Intern</b> at CodeAlpha</td>
+    <td width="30%">May 2024 - Dec 2024</td>
+  </tr>
+  <tr>
+    <td colspan="2">Remote · Fine-tuned ResNet-50 for image classification, collaborative-filtering music recommender.</td>
+  </tr>
+</table>
 
 ---
 
-## 🔗 Links
+<h3>🚀 Projects</h3>
 
-- **LinkedIn:** https://www.linkedin.com/in/mohamedashour-ai
-- **GitHub:** https://github.com/ashour-git
-- **Portfolio:** https://mohamed-ashour.vercel.app
-- **Resume:** https://github.com/ashour-git/ashour-git/blob/main/resume_pdf/Mohamed_Ashour_AI_Engineer.pdf
-- **Email:** mailto:muhamed.3ashour@gmail.com
+<table>
+  <tr>
+    <td width="70%"><b>RestAI</b> — AI Restaurant Management SaaS</td>
+    <td width="30%">Python · FastAPI · Next.js · LightGBM · pgvector · Docker</td>
+  </tr>
+  <tr>
+    <td colspan="2">LightGBM demand forecasting, pgvector RAG assistant on Llama 3.3 70B, 162 automated tests.</td>
+  </tr>
+  <tr>
+    <td height="1"></td>
+  </tr>
+  <tr>
+    <td width="70%"><b>Retail Analytics Copilot</b> — Hybrid RAG plus SQL Agent</td>
+    <td width="30%">Python · LangGraph · DSPy · Ollama · BM25 · SQLite</td>
+  </tr>
+  <tr>
+    <td colspan="2">8-node LangGraph workflow, DSPy tuning took valid SQL from 50% to 100%.</td>
+  </tr>
+  <tr>
+    <td height="1"></td>
+  </tr>
+  <tr>
+    <td width="70%"><b>Text2SQL Generator</b></td>
+    <td width="30%">Python · Azure OpenAI GPT-4o · GitHub Actions</td>
+  </tr>
+  <tr>
+    <td colspan="2">Production-hardened NL-to-SQL converter, 18/18 security tests passed before release.</td>
+  </tr>
+</table>
+
+---
+
+<h3>🎓 Education and Certifications</h3>
+
+<table>
+  <tr>
+    <td width="70%"><b>B.Sc. Computer Science</b> — Zagazig University, 2023</td>
+    <td width="30%"></td>
+  </tr>
+  <tr>
+    <td colspan="2">Supervised Machine Learning — DeepLearning.AI · AWS Machine Learning Foundations — Amazon · Claude Code in Action — Anthropic · Microsoft Machine Learning Track — Digital Egypt Pioneers Initiative</td>
+  </tr>
+</table>
+
+---
+
+<h3>🔗 Links</h3>
+
+<p align="center">
+  <a href="https://www.linkedin.com/in/mohamedashour-ai">
+    <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/>
+  </a>
+  <a href="https://github.com/ashour-git">
+    <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"/>
+  </a>
+  <a href="https://mohamed-ashour.vercel.app">
+    <img src="https://img.shields.io/badge/Portfolio-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Portfolio"/>
+  </a>
+  <a href="mailto:muhamed.3ashour@gmail.com">
+    <img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email"/>
+  </a>
+  <a href="https://github.com/ashour-git/ashour-git/blob/main/resume_pdf/Mohamed_Ashour_AI_Engineer.pdf">
+    <img src="https://img.shields.io/badge/Resume-1f4e79?style=for-the-badge&logo=adobepdf&logoColor=white" alt="Resume PDF"/>
+  </a>
+</p>
