@@ -1,13 +1,13 @@
 <!--
-  Owner: Mohamed Ashour. Last reviewed: 2026-11-15.
+  Owner: Mohamed Ashour. Last reviewed: 2026-11-16.
   Review this page when: the role or employer changes, a pinned project ships or is archived,
   the resume is updated, or a job search starts. Every claim below should match the resume.
   Art is procedural: edit and re-run `python assets/render_space.py`.
 -->
 
-<a href="https://mohamed-ashour.vercel.app"><img src="assets/banner.svg" width="100%" alt="Mohamed Ashour, AI Engineer. A terminal window beside a dithered planet."/></a>
+<a href="https://mohamed-ashour.vercel.app"><img src="assets/banner.svg" width="100%" alt="Mohamed Ashour, AI Engineer: LLM systems, RAG and agents. A terminal window beside a dithered planet."/></a>
 
-I build the AI governance layer at **SustainGRC**, a UK GRC and ESG platform: a deterministic EU AI Act risk classifier, hash-chained audit trails, and LLM drafting that returns a rights-impact assessment in under 30 seconds.
+I take LLM features from prototype to production. At **SustainGRC** I shipped a Claude-based service that drafts structured reports in under 30 seconds; on my own I've shipped two full-stack AI products, from schema to deployment.
 
 **[Portfolio](https://mohamed-ashour.vercel.app)** &nbsp;&nbsp;/&nbsp;&nbsp; **[LinkedIn](https://www.linkedin.com/in/mohamedashour-ai)** &nbsp;&nbsp;/&nbsp;&nbsp; **[Resume](resume_pdf/Mohamed_Ashour_AI_Engineer.pdf)** &nbsp;&nbsp;/&nbsp;&nbsp; **[Email](mailto:muhamed.3ashour@gmail.com)**
 
@@ -17,17 +17,19 @@ I build the AI governance layer at **SustainGRC**, a UK GRC and ESG platform: a 
 <tr>
 <td width="56%" valign="top">
 
-### Now
+### At SustainGRC
 
-AI Engineer at SustainGRC since September 2025. I joined as a data engineering intern in July and moved into the AI role two months later.
+AI Engineer since September 2025, after joining as a data engineering intern in July.
 
-**Risk classification.** Sorts AI systems into the five EU AI Act risk tiers, with segregation of duties enforced in PostgreSQL so no one person can approve a high-risk system alone.
+**LLM service.** Claude Haiku 4.5 on Azure AI Foundry generates structured long-form reports in under 30 seconds.
 
-**LLM drafting.** Claude Haiku 4.5 on Azure AI Foundry writes a structured rights-impact assessment for each high-risk system.
+**Text-to-SQL.** GPT-4o turns analyst questions into executable SQL behind two independent validation layers. Passed 18/18 security tests before release.
 
-**Shadow AI discovery.** Matches network logs against a vendor signature library to surface AI tools nobody registered.
+**Deterministic classifier.** A rule engine that sorts AI systems into the five EU AI Act risk tiers, with a hash-chained audit trail and approval rules enforced in PostgreSQL.
 
-`Python` `TypeScript` `FastAPI` `PostgreSQL` `pgvector` `LangGraph` `DSPy` `Azure` `Docker`
+**Log-matching pipeline.** Matches network logs against a database-backed signature library to flag unregistered AI tools.
+
+`Python` `LangGraph` `DSPy` `RAG` `pgvector` `FastAPI` `PostgreSQL` `Azure` `Docker`
 
 </td>
 <td width="44%" valign="middle" align="center">
@@ -42,19 +44,19 @@ AI Engineer at SustainGRC since September 2025. I joined as a data engineering i
 LightGBM demand forecasting tuned with Optuna, and a pgvector RAG assistant on Llama 3.3 70B grounded in live menu and order data. 162 automated tests.<br/>
 <sub>FastAPI, Next.js, LightGBM, pgvector, PostgreSQL, Docker</sub>
 
-**[Storefy](https://github.com/ashour-git/storefy)** &nbsp; Multi-tenant commerce platform for the Egyptian market<br/>
-Database-level tenant isolation, wildcard-subdomain storefronts, Paymob split payouts, and onboarding that generates a store theme and starter catalog from a text description.<br/>
-<sub>Next.js 15, TypeScript, Neon Postgres, Drizzle, Llama 3.3 70B, Inngest</sub>
-
 **[Retail Analytics Copilot](https://github.com/ashour-git/retail-analytics-copilot)** &nbsp; Hybrid RAG and SQL agent<br/>
 An 8-node LangGraph workflow routes each question between BM25 retrieval and SQL. DSPy tuning took valid, executable SQL from 50% to 100% on the eval set.<br/>
 <sub>LangGraph, DSPy, Ollama, BM25, SQLite</sub>
+
+**[Storefy](https://github.com/ashour-git/storefy)** &nbsp; Multi-tenant commerce platform for the Egyptian market<br/>
+Database-level tenant isolation, wildcard-subdomain storefronts, Paymob split payouts, and onboarding that generates a store theme and starter catalog from a text description.<br/>
+<sub>Next.js 15, TypeScript, Neon Postgres, Drizzle, Llama 3.3 70B, Inngest</sub>
 
 ### Path
 
 ```text
 2025-09  now      AI Engineer               SustainGRC
-2025-07  2025-09  Data Engineer Intern      SustainGRC    Text-to-SQL on GPT-4o, 18/18 security tests
+2025-07  2025-09  Data Engineer Intern      SustainGRC    Text-to-SQL, backup and disaster recovery
 2024-05  2024-12  Machine Learning Intern   CodeAlpha     ResNet-50 fine-tuning, music recommender
 2023              B.Sc. Computer Science    Zagazig University
 ```

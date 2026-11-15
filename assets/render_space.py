@@ -380,7 +380,7 @@ def banner():
     prompt = f'<tspan fill="{ACCENT}">$</tspan>'
     svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" role="img" aria-labelledby="t d">
   <title id="t">Mohamed Ashour, AI Engineer</title>
-  <desc id="d">A terminal window reading: whoami, Mohamed Ashour, AI Engineer building AI governance systems. Beside it, a dithered planet with city lights on its night side.</desc>
+  <desc id="d">A terminal window reading: whoami, Mohamed Ashour, AI Engineer, LLM systems, RAG and agents. Beside it, a dithered planet with city lights on its night side.</desc>
   <style>{CSS_MOTION}
   text{{font-family:{MONO}}}
   </style>
@@ -397,7 +397,7 @@ def banner():
     <text x="{tx}" y="{ty + 14}" font-size="21" fill="{DIM}">{prompt} whoami</text>
     <text x="{tx}" y="{ty + 76}" font-size="52" font-weight="700" fill="{INK}" letter-spacing="-1">Mohamed Ashour</text>
     <text x="{tx}" y="{ty + 120}" font-size="24" fill="{INK}">AI Engineer</text>
-    <text x="{tx}" y="{ty + 152}" font-size="19" fill="{DIM}">AI governance and compliance systems</text>
+    <text x="{tx}" y="{ty + 152}" font-size="19" fill="{DIM}">LLM systems, RAG and agents</text>
     <text x="{tx}" y="{ty + 198}" font-size="21" fill="{DIM}">{prompt}</text>
     <rect class="cur" x="{tx + 22}" y="{ty + 181}" width="12" height="22" fill="{INK}"/>
   </g>
