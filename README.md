@@ -5,9 +5,9 @@
   Art is procedural: edit and re-run `python assets/render_space.py`.
 -->
 
-<a href="https://mohamed-ashour.vercel.app"><img src="assets/banner.svg" width="100%" alt="Mohamed Ashour, AI Engineer: LLM systems, RAG and agents. A terminal window beside a dithered planet."/></a>
+<a href="https://mohamed-ashour.vercel.app"><img src="assets/banner.svg" width="100%" alt="Mohamed Ashour, AI Engineer: LLMs, NLP and computer vision. A terminal window beside a ray-traced black hole."/></a>
 
-I take LLM features from prototype to production. At **SustainGRC** I shipped a Claude-based service that drafts structured reports in under 30 seconds; on my own I've shipped two full-stack AI products, from schema to deployment.
+AI Engineer working across LLMs, NLP and computer vision. I build RAG pipelines, LangGraph agents and Text-to-SQL systems with evals and guardrails, and ship them as production services at **SustainGRC**.
 
 **[Portfolio](https://mohamed-ashour.vercel.app)** &nbsp;&nbsp;/&nbsp;&nbsp; **[LinkedIn](https://www.linkedin.com/in/mohamedashour-ai)** &nbsp;&nbsp;/&nbsp;&nbsp; **[Resume](resume_pdf/Mohamed_Ashour_AI_Engineer.pdf)** &nbsp;&nbsp;/&nbsp;&nbsp; **[Email](mailto:muhamed.3ashour@gmail.com)**
 
@@ -33,7 +33,7 @@ AI Engineer since September 2025, after joining as a data engineering intern in 
 
 </td>
 <td width="44%" valign="middle" align="center">
-<img src="assets/astronaut.svg" width="280" alt="A dithered astronaut floating in space, one arm reaching out."/>
+<img src="assets/astronaut.svg" width="280" alt="A dithered astronaut reaching toward a neural network drawn as a constellation."/>
 </td>
 </tr>
 </table>
@@ -65,4 +65,4 @@ Database-level tenant isolation, wildcard-subdomain storefronts, Paymob split pa
 
 Email is the fastest route: muhamed.3ashour@gmail.com. The [resume](resume_pdf/Mohamed_Ashour_AI_Engineer.pdf) has the full history.
 
-<img src="assets/horizon.svg" width="100%" alt="Earth rising over a dithered lunar horizon."/>
+<img src="assets/horizon.svg" width="100%" alt="Earth rising over a lunar horizon, marked by a computer-vision detection box and an image caption."/>

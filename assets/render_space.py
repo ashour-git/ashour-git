@@ -335,6 +335,113 @@ def render_astronaut(w, h):
     return gray.reshape(h, w), hit.reshape(h, w), accent.reshape(h, w)
 
 
+# --------------------------------------------------------------- black hole
+def atkinson_levels(gray: np.ndarray, levels) -> np.ndarray:
+    """Multi-level Atkinson dither. Returns index into `levels`."""
+    g = gray.astype(np.float64).copy()
+    lv = np.asarray(levels, float)
+    h, w = g.shape
+    out = np.zeros((h, w), np.uint8)
+    for y in range(h):
+        row = g[y]
+        for x in range(w):
+            old = row[x]
+            k = int(np.abs(lv - old).argmin())
+            out[y, x] = k
+            err = (old - lv[k]) / 8.0
+            if x + 1 < w:
+                row[x + 1] += err
+            if x + 2 < w:
+                row[x + 2] += err
+            if y + 1 < h:
+                if x > 0:
+                    g[y + 1, x - 1] += err
+                g[y + 1, x] += err
+                if x + 1 < w:
+                    g[y + 1, x + 1] += err
+            if y + 2 < h:
+                g[y + 2, x] += err
+    return out
+
+
+def render_blackhole(w, h, cx, cy, f, dist=18.0, tilt=7.0, roll=-5.0, r_in=3.0, r_out=11.5):
+    """Schwarzschild ray tracer (r_s = 1). Null geodesics are integrated with the
+    Binet-equivalent force x'' = -1.5 h^2 x / r^5, against a thin accretion disk
+    in the y=0 plane with Doppler beaming. Returns intensity, roughly [0, 1]."""
+    yy, xx = np.mgrid[0:h, 0:w].astype(np.float64)
+    sx, sy = (xx + 0.5 - cx) / f, (cy - (yy + 0.5)) / f
+    cr, sr = np.cos(np.radians(roll)), np.sin(np.radians(roll))
+    sx, sy = sx * cr - sy * sr, sx * sr + sy * cr
+    t = np.radians(tilt)
+    cam = V([0.0, dist * np.sin(t), -dist * np.cos(t)])
+    fwd = norm(-cam)
+    right = norm(np.cross(V([0, 1.0, 0]), fwd))
+    up = np.cross(fwd, right)
+    d = norm(fwd + sx[..., None] * right + sy[..., None] * up).reshape(-1, 3)
+    n = len(d)
+    x = np.tile(cam, (n, 1))
+    v = d.copy()
+    h2 = (np.cross(x, v) ** 2).sum(-1)
+    col = np.zeros(n)
+    alpha = np.zeros(n)
+    alive = np.ones(n, bool)
+    escaped = np.zeros(n, bool)
+
+    def acc(p, hh):
+        r2 = (p * p).sum(-1)
+        return -1.5 * hh[:, None] * p / (r2 ** 2.5)[:, None]
+
+    for _ in range(900):
+        i = np.where(alive)[0]
+        if not len(i):
+            break
+        p, q, hh = x[i], v[i], h2[i]
+        r = np.linalg.norm(p, axis=-1)
+        dt = np.clip(0.035 * r * r / (1 + r), 0.01, 0.6)[:, None]
+        a0 = acc(p, hh)
+        p1 = p + q * dt + 0.5 * a0 * dt * dt
+        q1 = q + 0.5 * (a0 + acc(p1, hh)) * dt
+        cross = (p[:, 1] * p1[:, 1]) < 0
+        if cross.any():
+            c = np.where(cross)[0]
+            fr = p[c, 1] / (p[c, 1] - p1[c, 1])
+            pc = p[c] + (p1[c] - p[c]) * fr[:, None]
+            rc = np.linalg.norm(pc, axis=-1)
+            ok = (rc > r_in) & (rc < r_out)
+            if ok.any():
+                c, pc, rc = c[ok], pc[ok], rc[ok]
+                prof = rc ** -3 * (1 - np.sqrt(r_in / rc))
+                prof /= (4.08 ** -3 * (1 - np.sqrt(3 / 4.08)))
+                phi = np.arctan2(pc[:, 2], pc[:, 0])
+                tex = fbm(np.stack([rc * 3.2, np.cos(phi) * 0.9, np.sin(phi) * 0.9], -1), 4)
+                streak = fbm(np.stack([rc * 9.0, np.cos(phi) * 2.6, np.sin(phi) * 2.6], -1) + 11.0, 3)
+                tex = 0.45 + 1.1 * (tex - 0.5) + 0.5 * (streak - 0.5)
+                beta = np.clip(np.sqrt(0.5 / rc), 0, 0.6)
+                vel = np.stack([-pc[:, 2], np.zeros_like(rc), pc[:, 0]], -1) / rc[:, None] * beta[:, None]
+                ncam = -norm(q[c])
+                gam = 1 / np.sqrt(1 - beta ** 2)
+                dop = 1 / (gam * (1 - (vel * ncam).sum(-1)))
+                edge = np.clip((r_out - rc) / 3.0, 0, 1) * np.clip((rc - r_in) / 0.25, 0, 1)
+                I = np.clip(prof * tex, 0, None) * dop ** 3 * edge
+                k = i[c]
+                col[k] += (1 - alpha[k]) * I
+                alpha[k] += (1 - alpha[k]) * 0.92 * edge
+        x[i], v[i] = p1, q1
+        r1 = np.linalg.norm(p1, axis=-1)
+        fell = r1 < 1.0
+        out = (r1 > dist * 1.6) & ((p1 * q1).sum(-1) > 0)
+        opaque = alpha[i] > 0.985
+        alive[i[fell | out | opaque]] = False
+        escaped[i[out]] = True
+
+    # lensed background stars, sampled by the escaped direction
+    fd = norm(v)
+    star = vnoise(fd * 150.0)
+    axis = (fd @ fwd) > np.cos(np.radians(6))      # hide the Einstein-ring pile-up
+    sky = (star > 0.9) & escaped & (alpha < 0.5) & ~axis
+    return col.reshape(h, w), sky.reshape(h, w)
+
+
 # ------------------------------------------------------------------ outputs
 CSS_MOTION = """
 @media (prefers-reduced-motion: no-preference) {
@@ -343,23 +450,27 @@ CSS_MOTION = """
   .tw3{animation:tw 5.1s ease-in-out infinite 2.6s}
   .cur{animation:blink 1.1s steps(1) infinite}
   .float{animation:float 9s ease-in-out infinite}
+  .sig{animation:sig 3.6s linear infinite}
+  .out{animation:pulse 3.6s ease-out infinite}
 }
 @keyframes tw{0%,100%{opacity:.15}50%{opacity:1}}
 @keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
 @keyframes float{0%,100%{transform:translate(0,0) rotate(0deg)}50%{transform:translate(0,-9px) rotate(-1.6deg)}}
+@keyframes sig{0%{stroke-dashoffset:112}38%,100%{stroke-dashoffset:-12}}
+@keyframes pulse{0%,72%{opacity:.35}82%{opacity:1}100%{opacity:.35}}
 """
 
 
-def twinkles(w, h, n, avoid=None, size=2):
+def twinkles(w, h, n, avoid=None, size=2, accent_last=True):
     out = []
     for i in range(n):
-        for _ in range(50):
+        for _ in range(80):
             x, y = rng.uniform(8, w - 8), rng.uniform(8, h - 8)
             if avoid is None or not avoid(x, y):
                 break
         cls = ("tw", "tw2", "tw3")[i % 3]
         s = size if rng.random() < 0.7 else size * 2
-        fill = ACCENT if i == n - 1 else INK
+        fill = ACCENT if (accent_last and i == n - 1) else INK
         out.append(f'<rect class="{cls}" x="{x:.0f}" y="{y:.0f}" width="{s}" height="{s}" fill="{fill}"/>')
     return "\n  ".join(out)
 
@@ -367,37 +478,37 @@ def twinkles(w, h, n, avoid=None, size=2):
 def banner():
     W, H, S = 1200, 400, 2
     w, h = W // S, H // S
-    gray, inside, city = render_planet(w, h, cx=505, cy=215, r=150, light=(-0.75, 0.55, 0.55), seed_off=1.7)
-    sky = starfield(h, w, 0.006) * ~inside
-    sky[(np.arange(w)[None, :] < 330) & (np.arange(h)[:, None] > 0)] *= 0.6
-    bits = atkinson(np.maximum(gray, sky) * 0.97)
-    idx = np.where(bits, 2, 0).astype(np.uint8)
-    idx[inside & ~bits] = 1
-    idx[city] = 3
-    png = to_png(np.kron(idx, np.ones((S, S), np.uint8)), [None, BG, INK, ACCENT])
+    bx, by = 452, 104                       # black hole centre, logical px
+    I, stars = render_blackhole(w, h, cx=bx, cy=by, f=214)
+    gray = 1 - np.exp(-2.6 * I)
+    idx = atkinson_levels(gray, [0.0, 0.38, 1.0])   # 0 bg, 1 accent, 2 ink
+    pal_idx = np.choose(idx, [0, 3, 2]).astype(np.uint8)
+    pal_idx[stars & (idx == 0)] = 2
+    png = to_png(np.kron(pal_idx, np.ones((S, S), np.uint8)), [None, BG, INK, ACCENT])
 
     tx, ty = 72, 112
     prompt = f'<tspan fill="{ACCENT}">$</tspan>'
+    X1 = 560
     svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" role="img" aria-labelledby="t d">
   <title id="t">Mohamed Ashour, AI Engineer</title>
-  <desc id="d">A terminal window reading: whoami, Mohamed Ashour, AI Engineer, LLM systems, RAG and agents. Beside it, a dithered planet with city lights on its night side.</desc>
+  <desc id="d">A terminal window reading: whoami, Mohamed Ashour, AI Engineer, LLMs, NLP and computer vision. Beside it, a ray-traced black hole whose accretion disk bends over the event horizon.</desc>
   <style>{CSS_MOTION}
   text{{font-family:{MONO}}}
   </style>
   <rect width="{W}" height="{H}" fill="{BG}"/>
   <image href="{data_uri(png)}" width="{W}" height="{H}" style="image-rendering:pixelated"/>
-  {twinkles(W, H, 9, avoid=lambda x, y: x < 720 or (x - 1010) ** 2 + (y - 430) ** 2 < 330 ** 2)}
+  {twinkles(W, H, 8, avoid=lambda x, y: x < X1 + 40 or (x - bx * S) ** 2 / 360 ** 2 + (y - by * S) ** 2 / 150 ** 2 < 1, accent_last=False)}
   <g>
-    <rect x="40" y="52" width="640" height="276" fill="{BG}" stroke="{INK}" stroke-width="1.5"/>
-    <line x1="40" y1="84" x2="680" y2="84" stroke="{INK}" stroke-width="1.5"/>
-    <text x="56" y="74" font-size="14" fill="{DIM}">ashour@orbit: ~</text>
-    <rect x="614" y="62" width="12" height="12" fill="none" stroke="{INK}"/>
-    <rect x="634" y="62" width="12" height="12" fill="none" stroke="{INK}"/>
-    <rect x="654" y="62" width="12" height="12" fill="{INK}"/>
+    <rect x="40" y="52" width="{X1 - 40}" height="276" fill="{BG}" stroke="{INK}" stroke-width="1.5"/>
+    <line x1="40" y1="84" x2="{X1}" y2="84" stroke="{INK}" stroke-width="1.5"/>
+    <text x="56" y="74" font-size="14" fill="{DIM}">ashour@event-horizon: ~</text>
+    <rect x="{X1 - 66}" y="62" width="12" height="12" fill="none" stroke="{INK}"/>
+    <rect x="{X1 - 46}" y="62" width="12" height="12" fill="none" stroke="{INK}"/>
+    <rect x="{X1 - 26}" y="62" width="12" height="12" fill="{INK}"/>
     <text x="{tx}" y="{ty + 14}" font-size="21" fill="{DIM}">{prompt} whoami</text>
     <text x="{tx}" y="{ty + 76}" font-size="52" font-weight="700" fill="{INK}" letter-spacing="-1">Mohamed Ashour</text>
     <text x="{tx}" y="{ty + 120}" font-size="24" fill="{INK}">AI Engineer</text>
-    <text x="{tx}" y="{ty + 152}" font-size="19" fill="{DIM}">LLM systems, RAG and agents</text>
+    <text x="{tx}" y="{ty + 152}" font-size="19" fill="{DIM}">LLMs, NLP and computer vision</text>
     <text x="{tx}" y="{ty + 198}" font-size="21" fill="{DIM}">{prompt}</text>
     <rect class="cur" x="{tx + 22}" y="{ty + 181}" width="12" height="22" fill="{INK}"/>
   </g>
@@ -406,26 +517,52 @@ def banner():
     (OUT / "banner.svg").write_text(svg, encoding="utf-8")
 
 
+def network_constellation():
+    """A small feed-forward net drawn as a constellation; pulses run layer by layer."""
+    layers = [(96, [22, 48, 74, 100]), (166, [14, 38, 62, 86, 110]), (236, [30, 60, 90]), (306, [136])]
+    edges, nodes = [], []
+    for li in range(len(layers) - 1):
+        (xa, ya), (xb, yb) = layers[li], layers[li + 1]
+        for a in ya:
+            for b in yb:
+                edges.append(f'<line x1="{xa}" y1="{a}" x2="{xb}" y2="{b}" stroke="{INK}" stroke-opacity=".16" stroke-width="1"/>')
+        for j in range(3):
+            a, b = ya[j % len(ya)], yb[(j * 2 + 1) % len(yb)]
+            delay = li * 1.1 + j * 0.15
+            edges.append(f'<line class="sig" pathLength="100" x1="{xa}" y1="{a}" x2="{xb}" y2="{b}" stroke="{INK}" '
+                         f'stroke-width="2" stroke-dasharray="12 100" stroke-dashoffset="112" style="animation-delay:{delay:.2f}s"/>')
+    for li, (x, ys) in enumerate(layers):
+        for y in ys:
+            if li == len(layers) - 1:
+                nodes.append(f'<rect class="out" x="{x - 4}" y="{y - 4}" width="8" height="8" fill="{ACCENT}"/>')
+            else:
+                nodes.append(f'<rect x="{x - 2}" y="{y - 2}" width="4" height="4" fill="{INK}"/>')
+    return "\n  ".join(edges + nodes)
+
+
 def astronaut():
-    W, H, S = 360, 420, 2
-    w, h = W // S, H // S
+    W, H, S = 360, 520, 2
+    DY = 100
+    w, h = W // S, 420 // S
     gray, hit, acc = render_astronaut(w, h)
     bits = atkinson(gray)
     idx = np.where(bits, 2, 0).astype(np.uint8)
     idx[hit & ~bits] = 1
     idx[acc] = 3
     png = to_png(np.kron(idx, np.ones((S, S), np.uint8)), [None, BG, INK, ACCENT])
-    sky = atkinson(starfield(h, w, 0.012) * 0.95)
+    sky = atkinson(starfield(H // S, w, 0.010) * 0.95)
+    sky[: 150 // S, 80 // S:] = False            # keep the constellation legible
     sky_png = to_png(np.kron(np.where(sky, 1, 0).astype(np.uint8), np.ones((S, S), np.uint8)), [None, INK])
     svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" role="img" aria-labelledby="t">
-  <title id="t">A dithered astronaut floating in space, one arm reaching out</title>
+  <title id="t">A dithered astronaut reaching toward a neural network drawn as a constellation</title>
   <style>{CSS_MOTION}
-  .float{{transform-origin:180px 210px;transform-box:view-box}}
+  .float{{transform-origin:180px 310px;transform-box:view-box}}
   </style>
   <rect width="{W}" height="{H}" fill="{BG}"/>
   <image href="{data_uri(sky_png)}" width="{W}" height="{H}" style="image-rendering:pixelated"/>
-  {twinkles(W, H, 5)}
-  <g class="float"><image href="{data_uri(png)}" width="{W}" height="{H}" style="image-rendering:pixelated"/></g>
+  {twinkles(W, H, 5, avoid=lambda x, y: y < 150 and x > 80)}
+  {network_constellation()}
+  <g class="float"><image href="{data_uri(png)}" y="{DY}" width="{W}" height="420" style="image-rendering:pixelated"/></g>
   <rect x="0.75" y="0.75" width="{W - 1.5}" height="{H - 1.5}" fill="none" stroke="{LINE}" stroke-width="1.5"/>
 </svg>
 '''
@@ -433,30 +570,41 @@ def astronaut():
 
 
 def horizon():
-    W, H, S = 1200, 220, 2
+    W, H, S = 1200, 260, 2
     w, h = W // S, H // S
     moon, minside, _ = render_planet(w, h, cx=w * 0.5, cy=h + 1505, r=1560, light=(0.35, 0.9, 0.25),
                                      craters=True, cities=False)
-    earth, einside, city = render_planet(w, h, cx=w * 0.73, cy=27, r=19, light=(-0.9, 0.25, 0.4), seed_off=4.2, cities=False)
+    ex, ey, er = w * 0.73, 47, 19
+    earth, einside, _ = render_planet(w, h, cx=ex, cy=ey, r=er, light=(-0.9, 0.25, 0.4), seed_off=4.2, cities=False)
     gray = np.where(minside, moon, np.maximum(earth, starfield(h, w, 0.005) * ~einside))
     bits = atkinson(gray)
     idx = np.where(bits, 2, 0).astype(np.uint8)
     idx[(minside | einside) & ~bits] = 1
-    idx[city & einside] = 3
     png = to_png(np.kron(idx, np.ones((S, S), np.uint8)), [None, BG, INK, ACCENT])
+    bx, by, bs = int(ex * S - 46), int(ey * S - 46), 92
+    label = "earth 0.97"
+    cap = 'caption: "earth rising over a lunar horizon"'
     svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" role="img" aria-labelledby="t">
-  <title id="t">Earth rising over a dithered lunar horizon</title>
-  <style>{CSS_MOTION}</style>
+  <title id="t">Earth rising over a dithered lunar horizon, marked by a detection box labelled earth 0.97 and an image caption</title>
+  <style>{CSS_MOTION}
+  text{{font-family:{MONO}}}
+  </style>
   <rect width="{W}" height="{H}" fill="{BG}"/>
   <image href="{data_uri(png)}" width="{W}" height="{H}" style="image-rendering:pixelated"/>
-  {twinkles(W, 120, 6, avoid=lambda x, y: (x - 876) ** 2 + (y - 54) ** 2 < 70 ** 2)}
+  {twinkles(W, 140, 6, avoid=lambda x, y: bx - 30 < x < bx + bs + 30 and y < by + bs + 20)}
+  <rect x="{bx}" y="{by}" width="{bs}" height="{bs}" fill="none" stroke="{ACCENT}" stroke-width="2"/>
+  <rect x="{bx - 1}" y="{by - 22}" width="{len(label) * 8.4 + 14:.0f}" height="22" fill="{ACCENT}"/>
+  <text x="{bx + 6}" y="{by - 6}" font-size="14" font-weight="700" fill="{BG}">{label}</text>
+  <rect x="24" y="{H - 44}" width="{len(cap) * 8.4 + 24:.0f}" height="28" fill="{BG}" stroke="{LINE}"/>
+  <text x="36" y="{H - 25}" font-size="14" fill="{INK}">{cap}</text>
 </svg>
 '''
     (OUT / "horizon.svg").write_text(svg, encoding="utf-8")
 
 
 if __name__ == "__main__":
-    banner()
-    astronaut()
-    horizon()
-    print("wrote banner.svg, astronaut.svg, horizon.svg")
+    import sys
+    jobs = {"banner": banner, "astronaut": astronaut, "horizon": horizon}
+    for name in (sys.argv[1:] or jobs):
+        jobs[name]()
+        print("wrote", name + ".svg")
