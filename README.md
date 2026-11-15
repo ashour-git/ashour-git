@@ -22,7 +22,7 @@ AI Engineer working across LLMs, NLP and computer vision. I build RAG pipelines,
 
 ### At SustainGRC
 
-Moved from data engineering intern to AI Engineer in two months (July to September 2025).
+Moved from data engineering intern to AI Engineer in two months (May to July 2025).
 
 **LLM service.** Shipped a drafting service on Claude Haiku 4.5 (Azure AI Foundry) that writes a structured assessment report in under 30 seconds.
 
@@ -80,7 +80,7 @@ Built database-level tenant isolation, wildcard-subdomain storefronts and Paymob
 
 ### Experience
 
-<img src="assets/trajectory.svg" width="100%" alt="Experience. Sep 2025 to now: AI Engineer, SustainGRC. Jul to Sep 2025: Data Engineer Intern, SustainGRC (Text-to-SQL, backup and disaster recovery). May to Dec 2024: ML Intern, CodeAlpha (ResNet-50, recommender). 2023: B.Sc. Computer Science, Zagazig University."/>
+<img src="assets/trajectory.svg" width="100%" alt="Experience. Jul 2025 to now: AI Engineer, SustainGRC. May to Jul 2025: Data Engineer Intern, SustainGRC (Text-to-SQL, backup and disaster recovery). May to Dec 2024: ML Intern, CodeAlpha (ResNet-50, recommender). 2023: B.Sc. Computer Science, Zagazig University."/>
 
 ### Contact
 

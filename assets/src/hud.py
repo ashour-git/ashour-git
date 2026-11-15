@@ -149,8 +149,8 @@ def tile(slug, name, icon, stack_icons):
 STOPS = [
     (0.05, "2023", "B.Sc. Computer Science", "Zagazig University", ""),
     (0.31, "May-Dec 2024", "ML Intern", "CodeAlpha", "ResNet-50, recommender"),
-    (0.56, "Jul 2025", "Data Engineer Intern", "SustainGRC", "Text-to-SQL, backup and DR"),
-    (0.82, "Sep 2025, now", "AI Engineer", "SustainGRC", "LLM service, classifier"),
+    (0.56, "May 2025", "Data Engineer Intern", "SustainGRC", "Text-to-SQL, backup and DR"),
+    (0.82, "Jul 2025, now", "AI Engineer", "SustainGRC", "LLM service, classifier"),
 ]
 
 
