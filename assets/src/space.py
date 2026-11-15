@@ -15,7 +15,10 @@ from pathlib import Path
 import numpy as np
 from PIL import Image
 
-OUT = Path(__file__).parent
+from kit import brackets, font_css
+
+OUT = Path(__file__).resolve().parents[1]
+CACHE = Path(__file__).with_name("cache")
 BG = "#0d1117"      # GitHub dark canvas, so panels blend in dark mode
 INK = "#e6edf3"     # GitHub dark foreground
 DIM = "#7d8590"
@@ -442,6 +445,18 @@ def render_blackhole(w, h, cx, cy, f, dist=18.0, tilt=7.0, roll=-5.0, r_in=3.0, 
     return col.reshape(h, w), sky.reshape(h, w)
 
 
+def cached(name: str, fn) -> bytes:
+    """Ray tracing and dithering are slow; reuse the last raster unless REBUILD=1."""
+    import os
+    CACHE.mkdir(exist_ok=True)
+    f = CACHE / f"{name}.png"
+    if f.exists() and os.environ.get("REBUILD") != "1":
+        return f.read_bytes()
+    png = fn()
+    f.write_bytes(png)
+    return png
+
+
 # ------------------------------------------------------------------ outputs
 CSS_MOTION = """
 @media (prefers-reduced-motion: no-preference) {
@@ -462,14 +477,15 @@ CSS_MOTION = """
 
 
 def twinkles(w, h, n, avoid=None, size=2, accent_last=True):
+    r = np.random.default_rng(w * 7919 + h * 31 + n)   # stable per image, independent of the cache
     out = []
     for i in range(n):
         for _ in range(80):
-            x, y = rng.uniform(8, w - 8), rng.uniform(8, h - 8)
+            x, y = r.uniform(8, w - 8), r.uniform(8, h - 8)
             if avoid is None or not avoid(x, y):
                 break
         cls = ("tw", "tw2", "tw3")[i % 3]
-        s = size if rng.random() < 0.7 else size * 2
+        s = size if r.random() < 0.7 else size * 2
         fill = ACCENT if (accent_last and i == n - 1) else INK
         out.append(f'<rect class="{cls}" x="{x:.0f}" y="{y:.0f}" width="{s}" height="{s}" fill="{fill}"/>')
     return "\n  ".join(out)
@@ -479,38 +495,55 @@ def banner():
     W, H, S = 1200, 400, 2
     w, h = W // S, H // S
     bx, by = 452, 104                       # black hole centre, logical px
-    I, stars = render_blackhole(w, h, cx=bx, cy=by, f=214)
-    gray = 1 - np.exp(-2.6 * I)
-    idx = atkinson_levels(gray, [0.0, 0.38, 1.0])   # 0 bg, 1 accent, 2 ink
-    pal_idx = np.choose(idx, [0, 3, 2]).astype(np.uint8)
-    pal_idx[stars & (idx == 0)] = 2
-    png = to_png(np.kron(pal_idx, np.ones((S, S), np.uint8)), [None, BG, INK, ACCENT])
+    def raster():
+        I, stars = render_blackhole(w, h, cx=bx, cy=by, f=214)
+        gray = 1 - np.exp(-2.6 * I)
+        idx = atkinson_levels(gray, [0.0, 0.38, 1.0])   # 0 bg, 1 accent, 2 ink
+        pal_idx = np.choose(idx, [0, 3, 2]).astype(np.uint8)
+        pal_idx[stars & (idx == 0)] = 2
+        return to_png(np.kron(pal_idx, np.ones((S, S), np.uint8)), [None, BG, INK, ACCENT])
+    png = cached("blackhole", raster)
 
     tx, ty = 72, 112
-    prompt = f'<tspan fill="{ACCENT}">$</tspan>'
     X1 = 560
+    cx, cy = bx * S, by * S
+    lines = ["ashour@event-horizon: ~", "$ whoami", "Mohamed Ashour", "AI Engineer",
+             "LLMs, NLP and computer vision"]
+    typed = "".join(f'<tspan class="k" style="animation-delay:{0.35 + 0.09 * i:.2f}s">{c}</tspan>'
+                    for i, c in enumerate("whoami"))
+
+    def ln(t):
+        return f'class="ln" style="animation-delay:{t:.2f}s"'
+
+    css = CSS_MOTION + font_css(" ".join(lines), (400, 700, 800)) + """
+@media (prefers-reduced-motion: no-preference) {
+  .k,.ln{animation:on 1ms linear both}
+  .cur{animation:blink 1.1s steps(1) 2s infinite both}
+}
+@keyframes on{from{opacity:0}to{opacity:1}}"""
     svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" role="img" aria-labelledby="t d">
   <title id="t">Mohamed Ashour, AI Engineer</title>
   <desc id="d">A terminal window reading: whoami, Mohamed Ashour, AI Engineer, LLMs, NLP and computer vision. Beside it, a ray-traced black hole whose accretion disk bends over the event horizon.</desc>
-  <style>{CSS_MOTION}
-  text{{font-family:{MONO}}}
+  <style>{css}
   </style>
   <rect width="{W}" height="{H}" fill="{BG}"/>
   <image href="{data_uri(png)}" width="{W}" height="{H}" style="image-rendering:pixelated"/>
-  {twinkles(W, H, 8, avoid=lambda x, y: x < X1 + 40 or (x - bx * S) ** 2 / 360 ** 2 + (y - by * S) ** 2 / 150 ** 2 < 1, accent_last=False)}
+  {twinkles(W, H, 8, avoid=lambda x, y: x < X1 + 40 or (x - cx) ** 2 / 360 ** 2 + (y - cy) ** 2 / 150 ** 2 < 1, accent_last=False)}
   <g>
     <rect x="40" y="52" width="{X1 - 40}" height="276" fill="{BG}" stroke="{INK}" stroke-width="1.5"/>
     <line x1="40" y1="84" x2="{X1}" y2="84" stroke="{INK}" stroke-width="1.5"/>
-    <text x="56" y="74" font-size="14" fill="{DIM}">ashour@event-horizon: ~</text>
+    <text x="56" y="73" font-size="14" fill="{DIM}">ashour@event-horizon: ~</text>
     <rect x="{X1 - 66}" y="62" width="12" height="12" fill="none" stroke="{INK}"/>
     <rect x="{X1 - 46}" y="62" width="12" height="12" fill="none" stroke="{INK}"/>
     <rect x="{X1 - 26}" y="62" width="12" height="12" fill="{INK}"/>
-    <text x="{tx}" y="{ty + 14}" font-size="21" fill="{DIM}">{prompt} whoami</text>
-    <text x="{tx}" y="{ty + 76}" font-size="52" font-weight="700" fill="{INK}" letter-spacing="-1">Mohamed Ashour</text>
-    <text x="{tx}" y="{ty + 120}" font-size="24" fill="{INK}">AI Engineer</text>
-    <text x="{tx}" y="{ty + 152}" font-size="19" fill="{DIM}">LLMs, NLP and computer vision</text>
-    <text x="{tx}" y="{ty + 198}" font-size="21" fill="{DIM}">{prompt}</text>
-    <rect class="cur" x="{tx + 22}" y="{ty + 181}" width="12" height="22" fill="{INK}"/>
+    <text x="{tx}" y="{ty + 14}" font-size="21" fill="{DIM}"><tspan fill="{ACCENT}">$</tspan> {typed}</text>
+    <text {ln(1.05)} x="{tx}" y="{ty + 76}" font-size="52" font-weight="800" fill="{INK}" letter-spacing="-1">Mohamed Ashour</text>
+    <text {ln(1.3)} x="{tx}" y="{ty + 120}" font-size="24" font-weight="700" fill="{INK}">AI Engineer</text>
+    <text {ln(1.5)} x="{tx}" y="{ty + 152}" font-size="19" fill="{DIM}">LLMs, NLP and computer vision</text>
+    <g {ln(1.8)}>
+      <text x="{tx}" y="{ty + 198}" font-size="21" fill="{ACCENT}">$</text>
+      <rect class="cur" x="{tx + 22}" y="{ty + 181}" width="12" height="22" fill="{INK}"/>
+    </g>
   </g>
 </svg>
 '''
@@ -544,15 +577,20 @@ def astronaut():
     W, H, S = 360, 520, 2
     DY = 100
     w, h = W // S, 420 // S
-    gray, hit, acc = render_astronaut(w, h)
-    bits = atkinson(gray)
-    idx = np.where(bits, 2, 0).astype(np.uint8)
-    idx[hit & ~bits] = 1
-    idx[acc] = 3
-    png = to_png(np.kron(idx, np.ones((S, S), np.uint8)), [None, BG, INK, ACCENT])
-    sky = atkinson(starfield(H // S, w, 0.010) * 0.95)
-    sky[: 150 // S, 80 // S:] = False            # keep the constellation legible
-    sky_png = to_png(np.kron(np.where(sky, 1, 0).astype(np.uint8), np.ones((S, S), np.uint8)), [None, INK])
+    def figure():
+        gray, hit, acc = render_astronaut(w, h)
+        bits = atkinson(gray)
+        idx = np.where(bits, 2, 0).astype(np.uint8)
+        idx[hit & ~bits] = 1
+        idx[acc] = 3
+        return to_png(np.kron(idx, np.ones((S, S), np.uint8)), [None, BG, INK, ACCENT])
+
+    def sky_layer():
+        sky = atkinson(starfield(H // S, w, 0.010) * 0.95)
+        sky[: 150 // S, 80 // S:] = False            # keep the constellation legible
+        return to_png(np.kron(np.where(sky, 1, 0).astype(np.uint8), np.ones((S, S), np.uint8)), [None, INK])
+
+    png, sky_png = cached("astronaut", figure), cached("astronaut-sky", sky_layer)
     svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" role="img" aria-labelledby="t">
   <title id="t">A dithered astronaut reaching toward a neural network drawn as a constellation</title>
   <style>{CSS_MOTION}
@@ -563,7 +601,8 @@ def astronaut():
   {twinkles(W, H, 5, avoid=lambda x, y: y < 150 and x > 80)}
   {network_constellation()}
   <g class="float"><image href="{data_uri(png)}" y="{DY}" width="{W}" height="420" style="image-rendering:pixelated"/></g>
-  <rect x="0.75" y="0.75" width="{W - 1.5}" height="{H - 1.5}" fill="none" stroke="{LINE}" stroke-width="1.5"/>
+  <rect x="0.5" y="0.5" width="{W - 1}" height="{H - 1}" fill="none" stroke="{LINE}"/>
+  {brackets(0, 0, W, H, arm=16)}
 </svg>
 '''
     (OUT / "astronaut.svg").write_text(svg, encoding="utf-8")
@@ -572,22 +611,26 @@ def astronaut():
 def horizon():
     W, H, S = 1200, 260, 2
     w, h = W // S, H // S
-    moon, minside, _ = render_planet(w, h, cx=w * 0.5, cy=h + 1505, r=1560, light=(0.35, 0.9, 0.25),
-                                     craters=True, cities=False)
     ex, ey, er = w * 0.73, 47, 19
-    earth, einside, _ = render_planet(w, h, cx=ex, cy=ey, r=er, light=(-0.9, 0.25, 0.4), seed_off=4.2, cities=False)
-    gray = np.where(minside, moon, np.maximum(earth, starfield(h, w, 0.005) * ~einside))
-    bits = atkinson(gray)
-    idx = np.where(bits, 2, 0).astype(np.uint8)
-    idx[(minside | einside) & ~bits] = 1
-    png = to_png(np.kron(idx, np.ones((S, S), np.uint8)), [None, BG, INK, ACCENT])
+
+    def raster():
+        moon, minside, _ = render_planet(w, h, cx=w * 0.5, cy=h + 1505, r=1560, light=(0.35, 0.9, 0.25),
+                                         craters=True, cities=False)
+        earth, einside, _ = render_planet(w, h, cx=ex, cy=ey, r=er, light=(-0.9, 0.25, 0.4), seed_off=4.2,
+                                          cities=False)
+        gray = np.where(minside, moon, np.maximum(earth, starfield(h, w, 0.005) * ~einside))
+        bits = atkinson(gray)
+        idx = np.where(bits, 2, 0).astype(np.uint8)
+        idx[(minside | einside) & ~bits] = 1
+        return to_png(np.kron(idx, np.ones((S, S), np.uint8)), [None, BG, INK, ACCENT])
+
+    png = cached("horizon", raster)
     bx, by, bs = int(ex * S - 46), int(ey * S - 46), 92
     label = "earth 0.97"
     cap = 'caption: "earth rising over a lunar horizon"'
     svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" role="img" aria-labelledby="t">
   <title id="t">Earth rising over a dithered lunar horizon, marked by a detection box labelled earth 0.97 and an image caption</title>
-  <style>{CSS_MOTION}
-  text{{font-family:{MONO}}}
+  <style>{CSS_MOTION}{font_css(label + " " + cap, (400, 700))}
   </style>
   <rect width="{W}" height="{H}" fill="{BG}"/>
   <image href="{data_uri(png)}" width="{W}" height="{H}" style="image-rendering:pixelated"/>
