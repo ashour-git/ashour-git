@@ -7,7 +7,7 @@
 
 <a href="https://mohamed-ashour.vercel.app"><img src="assets/banner.svg" width="100%" alt="Mohamed Ashour, AI Engineer: LLMs, NLP and computer vision. A terminal window beside a ray-traced black hole."/></a>
 
-AI Engineer working across LLMs, NLP and computer vision. I build RAG pipelines, LangGraph agents and Text-to-SQL systems with evals and guardrails, and ship them as production services at **SustainGRC**.
+AI Engineer working across LLMs, NLP and computer vision. I build RAG pipelines, LangGraph agents and Text-to-SQL systems with evals and guardrails. At **SustainGRC** I ship LLM services to production.
 
 <p>
 <a href="https://mohamed-ashour.vercel.app"><img src="assets/btn-portfolio.svg" height="44" alt="Portfolio"/></a>&nbsp;
@@ -22,15 +22,15 @@ AI Engineer working across LLMs, NLP and computer vision. I build RAG pipelines,
 
 ### At SustainGRC
 
-AI Engineer since September 2025, after joining as a data engineering intern in July.
+Moved from data engineering intern to AI Engineer in two months (July to September 2025).
 
-**LLM service.** Claude Haiku 4.5 on Azure AI Foundry generates structured long-form reports in under 30 seconds.
+**LLM service.** Shipped a drafting service on Claude Haiku 4.5 (Azure AI Foundry) that writes a structured assessment report in under 30 seconds.
 
-**Text-to-SQL.** GPT-4o turns analyst questions into executable SQL behind two independent validation layers. Passed 18/18 security tests before release.
+**Text-to-SQL.** Shipped GPT-4o Text-to-SQL that turns analyst questions into executable SQL behind two independent validation layers; passed 18/18 security tests before release.
 
-**Deterministic classifier.** A rule engine that sorts AI systems into the five EU AI Act risk tiers, with a hash-chained audit trail and approval rules enforced in PostgreSQL.
+**Deterministic classifier.** Designed a rule engine that sorts AI systems into the five EU AI Act risk tiers, with a hash-chained audit trail and segregation of duties enforced in PostgreSQL.
 
-**Log-matching pipeline.** Matches network logs against a database-backed signature library to flag unregistered AI tools.
+**Log-matching pipeline.** Built a pipeline that checks network logs against a database-backed vendor signature library and surfaces unregistered AI tools for review.
 
 </td>
 <td width="44%" valign="middle" align="center">
@@ -47,7 +47,7 @@ AI Engineer since September 2025, after joining as a data engineering intern in 
 <td valign="top">
 
 **[RestAI](https://github.com/ashour-git/Restaurant_AI)** &nbsp; Restaurant management SaaS with a separate ML service<br/>
-LightGBM demand forecasting tuned with Optuna, and a pgvector RAG assistant on Llama 3.3 70B grounded in live menu and order data. 162 automated tests.<br/>
+Built LightGBM demand forecasting tuned with Optuna and a pgvector RAG assistant on Llama 3.3 70B grounded in live menu and order data; 162 automated tests cover the API, forecasting and recommender paths.<br/>
 <sub>FastAPI, Next.js, LightGBM, pgvector, PostgreSQL, Docker</sub>
 
 </td>
@@ -57,7 +57,7 @@ LightGBM demand forecasting tuned with Optuna, and a pgvector RAG assistant on L
 <td valign="top">
 
 **[Retail Analytics Copilot](https://github.com/ashour-git/retail-analytics-copilot)** &nbsp; Hybrid RAG and SQL agent<br/>
-An 8-node LangGraph workflow routes each question between BM25 retrieval and SQL. DSPy tuning took valid, executable SQL from 50% to 100% on the eval set.<br/>
+Built an 8-node LangGraph workflow that routes each question between BM25 retrieval and SQL, with citations and a two-attempt SQL repair loop. DSPy tuning raised valid, executable SQL from 50% to 100% on the eval set.<br/>
 <sub>LangGraph, DSPy, Ollama, BM25, SQLite</sub>
 
 </td>
@@ -67,7 +67,7 @@ An 8-node LangGraph workflow routes each question between BM25 retrieval and SQL
 <td valign="top">
 
 **[Storefy](https://github.com/ashour-git/storefy)** &nbsp; Multi-tenant commerce platform for the Egyptian market<br/>
-Database-level tenant isolation, wildcard-subdomain storefronts, Paymob split payouts, and onboarding that generates a store theme and starter catalog from a text description.<br/>
+Built database-level tenant isolation, wildcard-subdomain storefronts and Paymob split payouts, plus onboarding that generates a store theme, layout blocks and starter catalog from a text description.<br/>
 <sub>Next.js 15, TypeScript, Neon Postgres, Drizzle, Llama 3.3 70B, Inngest</sub>
 
 </td>
