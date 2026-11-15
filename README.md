@@ -1,145 +1,66 @@
-<h1 align="left">Mohamed Ashour</h1>
+<!--
+  Owner: Mohamed Ashour. Last reviewed: 2026-11-15.
+  Review this page when: the role or employer changes, a pinned project ships or is archived,
+  the resume is updated, or a job search starts. Every claim below should match the resume.
+  Art is procedural: edit and re-run `python assets/render_space.py`.
+-->
 
-<p align="left">
-  <b>AI Engineer</b> building AI governance and compliance systems at
-  <b>SustainGRC</b>, a UK-based AI-native GRC & ESG SaaS platform.
-</p>
+<a href="https://mohamed-ashour.vercel.app"><img src="assets/banner.svg" width="100%" alt="Mohamed Ashour, AI Engineer. A terminal window beside a dithered planet."/></a>
 
-<blockquote align="left">
-  I design AI modules that operate under real constraints, from deterministic risk classification and RAG assistants to MLOps pipelines on Azure.
-</blockquote>
+I build the AI governance layer at **SustainGRC**, a UK GRC and ESG platform: a deterministic EU AI Act risk classifier, hash-chained audit trails, and LLM drafting that returns a rights-impact assessment in under 30 seconds.
 
-<hr/>
+**[Portfolio](https://mohamed-ashour.vercel.app)** &nbsp;&nbsp;/&nbsp;&nbsp; **[LinkedIn](https://www.linkedin.com/in/mohamedashour-ai)** &nbsp;&nbsp;/&nbsp;&nbsp; **[Resume](resume_pdf/Mohamed_Ashour_AI_Engineer.pdf)** &nbsp;&nbsp;/&nbsp;&nbsp; **[Email](mailto:muhamed.3ashour@gmail.com)**
 
-<table width="100%">
-  <tr>
-    <td width="50%" valign="top">
-      <h3>👋 About Me</h3>
-      <p>
-        AI Engineer building production AI governance and compliance systems
-        at SustainGRC, a UK-based AI-native GRC & ESG SaaS platform.
-      </p>
-      <p>
-        I joined SustainGRC as a data engineer intern in July 2025 and moved
-        into the AI role in September 2025.
-      </p>
-    </td>
-    <td width="50%" valign="top">
-      <h3>🛠 Tech Stack</h3>
-      <p align="center">
-        <a href="#"><img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python"/></a>
-        <a href="#"><img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript"/></a>
-        <a href="#"><img src="https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white" alt="FastAPI"/></a>
-        <a href="#"><img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL"/></a>
-        <a href="#"><img src="https://img.shields.io/badge/LangGraph-000000?style=for-the-badge&logo=python&logoColor=white" alt="LangGraph"/></a>
-        <a href="#"><img src="https://img.shields.io/badge/DSPy-000000?style=for-the-badge&logo=python&logoColor=white" alt="DSPy"/></a>
-        <a href="#"><img src="https://img.shields.io/badge/Azure-0089D6?style=for-the-badge&logo=microsoft-azure&logoColor=white" alt="Azure"/></a>
-        <a href="#"><img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker"/></a>
-      </p>
-    </td>
-  </tr>
+<br/>
+
+<table>
+<tr>
+<td width="56%" valign="top">
+
+### Now
+
+AI Engineer at SustainGRC since September 2025. I joined as a data engineering intern in July and moved into the AI role two months later.
+
+**Risk classification.** Sorts AI systems into the five EU AI Act risk tiers, with segregation of duties enforced in PostgreSQL so no one person can approve a high-risk system alone.
+
+**LLM drafting.** Claude Haiku 4.5 on Azure AI Foundry writes a structured rights-impact assessment for each high-risk system.
+
+**Shadow AI discovery.** Matches network logs against a vendor signature library to surface AI tools nobody registered.
+
+`Python` `TypeScript` `FastAPI` `PostgreSQL` `pgvector` `LangGraph` `DSPy` `Azure` `Docker`
+
+</td>
+<td width="44%" valign="middle" align="center">
+<img src="assets/astronaut.svg" width="280" alt="A dithered astronaut floating in space, one arm reaching out."/>
+</td>
+</tr>
 </table>
 
-<hr/>
+### Selected work
 
-<h3>💼 Experience</h3>
+**[RestAI](https://github.com/ashour-git/Restaurant_AI)** &nbsp; Restaurant management SaaS with a separate ML service<br/>
+LightGBM demand forecasting tuned with Optuna, and a pgvector RAG assistant on Llama 3.3 70B grounded in live menu and order data. 162 automated tests.<br/>
+<sub>FastAPI, Next.js, LightGBM, pgvector, PostgreSQL, Docker</sub>
 
-<table width="100%" border="0" cellpadding="8" cellspacing="0">
-  <tr>
-    <td width="70%"><b>AI Engineer</b> at SustainGRC</td>
-    <td width="30%">Sep 2025 - Present</td>
-  </tr>
-  <tr>
-    <td colspan="2">Remote · Deterministic EU AI Act classification engine, LLM drafting service, Shadow AI discovery, climate-risk data pipeline.</td>
-  </tr>
-  <tr>
-    <td height="1"></td>
-  </tr>
-  <tr>
-    <td width="70%"><b>Data Engineer Intern</b> at SustainGRC</td>
-    <td width="30%">Jul 2025 - Sep 2025</td>
-  </tr>
-  <tr>
-    <td colspan="2">Remote · Text-to-SQL on GPT-4o with dual validation layers (18/18 security tests), automated backup and disaster recovery for ESG datasets.</td>
-  </tr>
-  <tr>
-    <td height="1"></td>
-  </tr>
-  <tr>
-    <td width="70%"><b>Machine Learning Intern</b> at CodeAlpha</td>
-    <td width="30%">May 2024 - Dec 2024</td>
-  </tr>
-  <tr>
-    <td colspan="2">Remote · Fine-tuned ResNet-50 for image classification, collaborative-filtering music recommender.</td>
-  </tr>
-</table>
+**[Storefy](https://github.com/ashour-git/storefy)** &nbsp; Multi-tenant commerce platform for the Egyptian market<br/>
+Database-level tenant isolation, wildcard-subdomain storefronts, Paymob split payouts, and onboarding that generates a store theme and starter catalog from a text description.<br/>
+<sub>Next.js 15, TypeScript, Neon Postgres, Drizzle, Llama 3.3 70B, Inngest</sub>
 
-<hr/>
+**[Retail Analytics Copilot](https://github.com/ashour-git/retail-analytics-copilot)** &nbsp; Hybrid RAG and SQL agent<br/>
+An 8-node LangGraph workflow routes each question between BM25 retrieval and SQL. DSPy tuning took valid, executable SQL from 50% to 100% on the eval set.<br/>
+<sub>LangGraph, DSPy, Ollama, BM25, SQLite</sub>
 
-<h3>🚀 Projects</h3>
+### Path
 
-<table width="100%" border="0" cellpadding="8" cellspacing="0">
-  <tr>
-    <td width="70%"><b>RestAI</b> — AI Restaurant Management SaaS</td>
-    <td width="30%">Python · FastAPI · Next.js · LightGBM · pgvector · Docker</td>
-  </tr>
-  <tr>
-    <td colspan="2">LightGBM demand forecasting, pgvector RAG assistant on Llama 3.3 70B, 162 automated tests.</td>
-  </tr>
-  <tr>
-    <td height="1"></td>
-  </tr>
-  <tr>
-    <td width="70%"><b>Retail Analytics Copilot</b> — Hybrid RAG plus SQL Agent</td>
-    <td width="30%">Python · LangGraph · DSPy · Ollama · BM25 · SQLite</td>
-  </tr>
-  <tr>
-    <td colspan="2">8-node LangGraph workflow, DSPy tuning took valid SQL from 50% to 100%.</td>
-  </tr>
-  <tr>
-    <td height="1"></td>
-  </tr>
-  <tr>
-    <td width="70%"><b>Text2SQL Generator</b></td>
-    <td width="30%">Python · Azure OpenAI GPT-4o · GitHub Actions</td>
-  </tr>
-  <tr>
-    <td colspan="2">Production-hardened NL-to-SQL converter, 18/18 security tests passed before release.</td>
-  </tr>
-</table>
+```text
+2025-09  now      AI Engineer               SustainGRC
+2025-07  2025-09  Data Engineer Intern      SustainGRC    Text-to-SQL on GPT-4o, 18/18 security tests
+2024-05  2024-12  Machine Learning Intern   CodeAlpha     ResNet-50 fine-tuning, music recommender
+2023              B.Sc. Computer Science    Zagazig University
+```
 
-<hr/>
+### Contact
 
-<h3>🎓 Education and Certifications</h3>
+Email is the fastest route: muhamed.3ashour@gmail.com. The [resume](resume_pdf/Mohamed_Ashour_AI_Engineer.pdf) has the full history.
 
-<table width="100%" border="0" cellpadding="8" cellspacing="0">
-  <tr>
-    <td width="70%"><b>B.Sc. Computer Science</b> — Zagazig University, 2023</td>
-    <td width="30%"></td>
-  </tr>
-  <tr>
-    <td colspan="2">Supervised Machine Learning — DeepLearning.AI · AWS Machine Learning Foundations — Amazon · Claude Code in Action — Anthropic · Microsoft Machine Learning Track — Digital Egypt Pioneers Initiative</td>
-  </tr>
-</table>
-
-<hr/>
-
-<h3>🔗 Links</h3>
-
-<p align="left">
-  <a href="https://www.linkedin.com/in/mohamedashour-ai">
-    <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/>
-  </a>
-  <a href="https://github.com/ashour-git">
-    <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"/>
-  </a>
-  <a href="https://mohamed-ashour.vercel.app">
-    <img src="https://img.shields.io/badge/Portfolio-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Portfolio"/>
-  </a>
-  <a href="mailto:muhamed.3ashour@gmail.com">
-    <img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email"/>
-  </a>
-  <a href="https://github.com/ashour-git/ashour-git/blob/main/resume_pdf/Mohamed_Ashour_AI_Engineer.pdf">
-    <img src="https://img.shields.io/badge/Resume-1f4e79?style=for-the-badge&logo=adobepdf&logoColor=white" alt="Resume PDF"/>
-  </a>
-</p>
+<img src="assets/horizon.svg" width="100%" alt="Earth rising over a dithered lunar horizon."/>
