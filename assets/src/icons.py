@@ -22,7 +22,7 @@ PHOSPHOR = ROOT / "site/node_modules/@phosphor-icons/react/dist/defs"
 NERD_FONT = Path("C:/Windows/Fonts/JetBrainsMonoNerdFont-Regular.ttf")
 
 PHOSPHOR_ICONS = ["Planet", "LinkedinLogo", "FileText", "EnvelopeSimple", "ChefHat", "Graph",
-                  "Storefront", "Sparkle", "Eye", "Database", "Cloud", "RocketLaunch"]
+                  "Storefront", "Sparkle", "Eye", "Database", "Cloud", "RocketLaunch", "Translate"]
 DEVICONS = ["python", "typescript", "fastapi", "nextjs", "postgresql", "redis", "sqlite",
             "tensorflow", "opencv", "pandas",
             "docker", "azure", "aws", "githubactions", "vercel"]

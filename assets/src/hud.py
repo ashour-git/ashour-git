@@ -39,7 +39,7 @@ STACK = [
     ("Sparkle", "LLMs and agents", {"chips": [["Claude Haiku 4.5", "GPT-4o", "Gemini 2.5 Flash", "Llama 3.3 70B"],
                                               ["LangGraph", "LangChain", "DSPy", "Hugging Face", "pgvector", "Ollama"]]}),
     ("Eye", "ML and vision", {"icons": [("tensorflow", "TensorFlow"), ("opencv", "OpenCV"), ("pandas", "pandas")],
-                              "extra": ["PyTorch", "scikit-learn", "LightGBM", "MLflow", "YOLOv5"]}),
+                              "extra": ["PyTorch", "scikit-learn", "LightGBM", "MLflow", "YOLOv5", "MediaPipe"]}),
     ("Database", "Backend and data", {"icons": [("python", "Python"), ("typescript", "TypeScript"),
                                                 ("fastapi", "FastAPI"), ("nextjs", "Next.js"),
                                                 ("postgresql", "PostgreSQL"), ("redis", "Redis"),
@@ -126,6 +126,7 @@ def stack():
 
 # ------------------------------------------------------------ project tiles
 TILES = [
+    ("bilingual", "Bilingual RAG Copilot", "Translate", ["nextjs", "typescript", "vercel"]),
     ("restai", "RestAI", "ChefHat", ["fastapi", "nextjs", "postgresql"]),
     ("copilot", "Retail Analytics Copilot", "Graph", ["python", "sqlite"]),
     ("storefy", "Storefy", "Storefront", ["nextjs", "typescript", "postgresql"]),

@@ -645,6 +645,43 @@ def horizon():
     (OUT / "horizon.svg").write_text(svg, encoding="utf-8")
 
 
+def linkedin_banner():
+    """1584x396 LinkedIn background. LinkedIn overlaps the bottom-left with the
+    profile photo, so text starts at x=440 and nothing important sits below it."""
+    W, H, S = 1584, 396, 2
+    w, h = W // S, H // S
+    bx, by = 600, 98
+
+    def raster():
+        I, stars = render_blackhole(w, h, cx=bx, cy=by, f=200)
+        gray = 1 - np.exp(-2.6 * I)
+        idx = atkinson_levels(gray, [0.0, 0.38, 1.0])
+        pal_idx = np.choose(idx, [0, 3, 2]).astype(np.uint8)
+        pal_idx[stars & (idx == 0)] = 2
+        return to_png(np.kron(pal_idx, np.ones((S, S), np.uint8)), [None, BG, INK, ACCENT])
+
+    png = cached("blackhole-linkedin", raster)
+    x = 440
+    lines = ["$ whoami", "AI Engineer", "LLMs, RAG and AI agents", "NLP and computer vision",
+             "github.com/ashour-git", "mohamed-ashour.vercel.app"]
+    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" role="img" aria-labelledby="t">
+  <title id="t">Mohamed Ashour, AI Engineer: LLMs, RAG and AI agents, NLP and computer vision</title>
+  <style>{font_css(" ".join(lines), (400, 700, 800))}
+  </style>
+  <rect width="{W}" height="{H}" fill="{BG}"/>
+  <image href="{data_uri(png)}" width="{W}" height="{H}" style="image-rendering:pixelated"/>
+  <rect x="{x - 28}" y="70" width="440" height="236" fill="{BG}" opacity=".88"/>
+  {brackets(x - 28, 70, 440, 236, arm=14, color=INK, sw=1.5)}
+  <text x="{x}" y="112" font-size="20" fill="{DIM}"><tspan fill="{ACCENT}">$</tspan> whoami</text>
+  <text x="{x}" y="174" font-size="54" font-weight="800" fill="{INK}" letter-spacing="-1">AI Engineer</text>
+  <text x="{x}" y="216" font-size="21" fill="{INK}">LLMs, RAG and AI agents</text>
+  <text x="{x}" y="246" font-size="21" fill="{INK}">NLP and computer vision</text>
+  <text x="{x}" y="286" font-size="16" fill="{DIM}">mohamed-ashour.vercel.app</text>
+</svg>
+'''
+    (OUT / "linkedin-banner.svg").write_text(svg, encoding="utf-8")
+
+
 if __name__ == "__main__":
     import sys
     jobs = {"banner": banner, "astronaut": astronaut, "horizon": horizon}

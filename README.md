@@ -24,9 +24,9 @@ AI Engineer working across LLMs, NLP and computer vision. I build RAG pipelines,
 
 Moved from data engineering intern to AI Engineer in two months (May to July 2025).
 
-**LLM service.** Shipped a drafting service on Claude Haiku 4.5 (Azure AI Foundry) that writes a structured assessment report in under 30 seconds.
+**LLM service.** Shipped an LLM service on Claude Haiku 4.5 (Azure AI Foundry) that drafts structured rights-impact assessments in under 30 seconds.
 
-**Text-to-SQL.** Shipped GPT-4o Text-to-SQL that turns analyst questions into executable SQL behind two independent validation layers; passed 18/18 security tests before release.
+**Text-to-SQL.** Shipped GPT-4o Text-to-SQL (Azure OpenAI) that turns analyst questions into executable SQL behind two independent validation layers; passed 18/18 security tests before release.
 
 **Deterministic classifier.** Designed a rule engine that sorts AI systems into the five EU AI Act risk tiers, with a hash-chained audit trail and segregation of duties enforced in PostgreSQL.
 
@@ -43,12 +43,12 @@ Moved from data engineering intern to AI Engineer in two months (May to July 202
 
 <table>
 <tr>
-<td width="128" valign="top"><a href="https://github.com/ashour-git/Restaurant_AI"><img src="assets/tile-restai.svg" width="112" alt="RestAI"/></a></td>
+<td width="128" valign="top"><a href="https://mohamed-ashour.vercel.app"><img src="assets/tile-bilingual.svg" width="112" alt="Bilingual RAG Copilot"/></a></td>
 <td valign="top">
 
-**[RestAI](https://github.com/ashour-git/Restaurant_AI)** &nbsp; Restaurant management SaaS with a separate ML service<br/>
-Built LightGBM demand forecasting tuned with Optuna and a pgvector RAG assistant on Llama 3.3 70B grounded in live menu and order data; 162 automated tests cover the API, forecasting and recommender paths.<br/>
-<sub>FastAPI, Next.js, LightGBM, pgvector, PostgreSQL, Docker</sub>
+**[Bilingual RAG Copilot](https://mohamed-ashour.vercel.app)** &nbsp; Arabic/English assistant on my portfolio<br/>
+Built hybrid-search RAG (BM25 + MiniLM embeddings) with cited answers in Arabic or English, including Egyptian Franco-Arabic (Arabizi) input. Tested with 200 unit tests and a 30+ case bilingual eval suite.<br/>
+<sub>TypeScript, Next.js, Groq (Llama 3.3 70B), MiniLM embeddings, BM25, Vercel</sub>
 
 </td>
 </tr>
@@ -59,6 +59,16 @@ Built LightGBM demand forecasting tuned with Optuna and a pgvector RAG assistant
 **[Retail Analytics Copilot](https://github.com/ashour-git/retail-analytics-copilot)** &nbsp; Hybrid RAG and SQL agent<br/>
 Built an 8-node LangGraph workflow that routes each question between BM25 retrieval and SQL, with citations and a two-attempt SQL repair loop. DSPy tuning raised valid, executable SQL from 50% to 100% on the eval set.<br/>
 <sub>LangGraph, DSPy, Ollama, BM25, SQLite</sub>
+
+</td>
+</tr>
+<tr>
+<td width="128" valign="top"><a href="https://github.com/ashour-git/Restaurant_AI"><img src="assets/tile-restai.svg" width="112" alt="RestAI"/></a></td>
+<td valign="top">
+
+**[RestAI](https://github.com/ashour-git/Restaurant_AI)** &nbsp; Restaurant management SaaS with a separate ML service<br/>
+Built LightGBM demand forecasting tuned with Optuna and a pgvector RAG assistant on Llama 3.3 70B grounded in live menu and order data; 162 automated tests cover the API, forecasting and recommender paths.<br/>
+<sub>FastAPI, Next.js, LightGBM, pgvector, PostgreSQL, Docker</sub>
 
 </td>
 </tr>
@@ -76,7 +86,7 @@ Built database-level tenant isolation, wildcard-subdomain storefronts and Paymob
 
 ### Stack
 
-<img src="assets/stack.svg" width="100%" alt="Tech stack. LLMs and agents: Claude Haiku 4.5, GPT-4o, Gemini 2.5 Flash, Llama 3.3 70B, LangGraph, LangChain, DSPy, Hugging Face, pgvector, Ollama. ML and vision: TensorFlow, OpenCV, pandas, PyTorch, scikit-learn, LightGBM, MLflow, YOLOv5. Backend and data: Python, TypeScript, FastAPI, Next.js, PostgreSQL, Redis, SQLite. Cloud and ops: Docker, Azure, AWS, GitHub Actions, Vercel, Neon, Inngest."/>
+<img src="assets/stack.svg" width="100%" alt="Tech stack. LLMs and agents: Claude Haiku 4.5, GPT-4o, Gemini 2.5 Flash, Llama 3.3 70B, LangGraph, LangChain, DSPy, Hugging Face, pgvector, Ollama. ML and vision: TensorFlow, OpenCV, pandas, PyTorch, scikit-learn, LightGBM, MLflow, YOLOv5, MediaPipe. Backend and data: Python, TypeScript, FastAPI, Next.js, PostgreSQL, Redis, SQLite. Cloud and ops: Docker, Azure, AWS, GitHub Actions, Vercel, Neon, Inngest."/>
 
 ### Experience
 

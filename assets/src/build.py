@@ -14,5 +14,6 @@ if __name__ == "__main__":
     space.banner()
     space.astronaut()
     space.horizon()
+    space.linkedin_banner()
     hud.build()
-    print("built banner, astronaut, horizon, buttons, stack, tiles, trajectory")
+    print("built banner, astronaut, horizon, linkedin-banner, buttons, stack, tiles, trajectory")
