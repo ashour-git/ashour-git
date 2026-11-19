@@ -47,7 +47,7 @@ Moved from data engineering intern to AI Engineer in two months (May to July 202
 <td valign="top">
 
 **[Bilingual RAG Copilot](https://mohamed-ashour.vercel.app)** &nbsp; Arabic/English assistant on my portfolio<br/>
-Built hybrid-search RAG (BM25 + MiniLM embeddings) with cited answers in Arabic or English, including Egyptian Franco-Arabic (Arabizi) input. Tested with 200 unit tests and a 30+ case bilingual eval suite.<br/>
+Built hybrid-search RAG (BM25 + MiniLM embeddings) with cited answers in Arabic or English, including Egyptian Franco-Arabic (Arabizi) input. Tested with 207 unit tests and a 33-check bilingual eval suite.<br/>
 <sub>TypeScript, Next.js, Groq (Llama 3.3 70B), MiniLM embeddings, BM25, Vercel</sub>
 
 </td>
